@@ -3,6 +3,10 @@
 
 #include <iostream>
 
+#include <Material.h>
+
+
+
 enum CORRECTIONS {
     DENSITY_EFFECT = 0,
     SHELL_CORRECTION = 1
@@ -10,11 +14,12 @@ enum CORRECTIONS {
 
 
 
+
 class Bethe_Block
 {
 private:
     //Bethe-Block Formula Constants
-    double K;
+    double _K;
     //Detector MATERIAL
     int _Z; 
     int _A; 
@@ -49,11 +54,12 @@ private:
     
 
 public:
-    Bethe_Block(/* args */);
+    Bethe_Block(bool corrections = true, const Material& material, const double& thickness);
     ~Bethe_Block();
 
     //Settings
     void Set_Material(int Z, int A, double zeta, double I, double thickness);
+    void Set_Material(const Material& material, const double& thickness);
 
     //GLOBAL CORRECTION ENABLE
     
@@ -67,9 +73,13 @@ public:
 
 };
 
-Bethe_Block::Bethe_Block(/* args */)
+Bethe_Block::Bethe_Block(bool corrections = true, const Material& material, const double& thickness)
 {
-    //COMPUTE K
+    _K = _Compute_K();
+    Enable_Correction(corrections);
+    Set_Material(material,thickness);
+
+    
 }
 
 Bethe_Block::~Bethe_Block()
