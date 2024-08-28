@@ -10,8 +10,14 @@
 #include "RooDataSet.h"
 
 
-inline RooDataSet DataGenerator::_ToFGenerator(int i;){
+inline RooDataSet DataGenerator::_ToFGenerator(){
 
+
+    RooRealVar tof("t","t",_range.min,_range.max,_unit);
+    RooRealVar mean("mean","mean",_mean,_unit);
+    RooRealVar sigma("sigma","sigma",_sigma,_unit);
+
+    
 
 }
 
