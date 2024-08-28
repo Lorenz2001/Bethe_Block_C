@@ -2,7 +2,7 @@
 #define MATERIAL_H
 
 
-struct material
+struct Material
 {
     int Z;
     int A;
