@@ -9,12 +9,21 @@ enum CORRECTIONS {
 };
 
 
+struct Material {
+    double density;
+    int Z;
+    int A;
+    double zeta;
+    double I;
+}
+
+
 
 class Bethe_Block
 {
 private:
     //Bethe-Block Formula Constants
-    double K;
+    double _K;
     //Detector MATERIAL
     int _Z; 
     int _A; 
@@ -40,7 +49,7 @@ private:
             //Bethe terms
     double _Log(const double& beta, const double& gamma);
     double _Linear_z(const double& dE, const double& beta);
-    double _Linear_dE(const double& z, const double& beta);
+    double _Linear_dE(const int& z, const double& beta);
             //Other Functions
 
     double _Tmax(const double& M, const double& beta, const double& gamma);
@@ -49,7 +58,7 @@ private:
     
 
 public:
-    Bethe_Block(/* args */);
+    Bethe_Block(const Material& material, double thickness, bool corrections = true);
     ~Bethe_Block();
 
     //Settings
@@ -62,14 +71,17 @@ public:
 
 
     //FINAL COMPUTATIONS
-    double dE_dx(const double& z, const double& tof);
-    double z_squared(double dE, double tof);
+    double dE_dx(const int& z, const double& beta, bool enable_dx = false);
+    double z_squared(const double& dE, const double& beta);
 
 };
 
-Bethe_Block::Bethe_Block(/* args */)
+Bethe_Block::Bethe_Block(const Material& material, double thickness, bool corrections = true)
 {
-    //COMPUTE K
+    _Compute_K();
+    Set_Material(material.Z, material.A, material.zeta,material.I,thickness)
+
+
 }
 
 Bethe_Block::~Bethe_Block()
