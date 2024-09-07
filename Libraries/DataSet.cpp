@@ -1,6 +1,6 @@
 #include <DataSet.h>
 #include <Bethe_Block.h>
-
+#include <constants.h>
 
 #include <vector>
 #include <map>
@@ -14,6 +14,20 @@
 #include "TRandom3.h"
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//---------------------------------------
+
 inline bool DataGenerator::_ToF_Generator(const int N = 1E3/*Numbers of data generated*/){
 
 
@@ -23,7 +37,7 @@ inline bool DataGenerator::_ToF_Generator(const int N = 1E3/*Numbers of data gen
 
     RooGaussian gauss("gauss","gaussian distribution ToF",tof,mean,sigma);
 
-    RooDataSet data = gauss.generate(tof,N);
+    RooDataSet* data = gauss.generate(tof,N);
 
      if(/*control condition*/1)
         
@@ -35,16 +49,17 @@ inline bool DataGenerator::_ToF_Generator(const int N = 1E3/*Numbers of data gen
 inline bool DataGenerator::_dE_Generator(const RooDataSet* ToF_Data, const double& L){
     
     
-    TRandom3 rand;
+    
     
     RooDataSet* dE_Data;
-    RooRealVar dE("dE","dE");
+    RooRealVar dE;
     
     for(int i = 0; i < ToF_Data->numEntries(); i++){
-        const RooArgSet* row = data.get(i);
-        double tof = ((RooRealVar*)row->find("t"))->GetVal();
-        dE.SetValue(rand.Gaus(BB->dE(_z, tof/(L*c))),_resolution);
-        dE_Data->add(RooArgSet(dE))
+        TRandom3* rand;
+        const RooArgSet* row = ToF_Data->get(i);
+        double tof = ((RooRealVar*)row->find("t"))->getVal();
+        dE.setVal(rand->Gaus(_BB->dE(_z, tof/(L*c)),_resolution));
+        dE_Data->add(RooArgSet(dE));
     }
 
     if(/*control condition*/1)

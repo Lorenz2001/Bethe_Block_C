@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <map>
+#include <algorithm>
 
 #include "RooRealVar.h"
 #include "RooGaussian.h"
@@ -19,23 +20,36 @@
 
 template <typename T>
 struct Range{
+    bool empty = false;
     T min;
     T max;
 };
 class DataSet
 {
+    RooDataSet* generated;
 private:
-    
-    std::map<int,Range> _map_charge_tof; //int = carica disponibile, Range = range del tof relativo a quella carica
+    RooRealVar _dE;
+    RooRealVar _tof;
+    Bethe_Block _BB;
+    std::map<int,Range<double>> _map_charge_tof; //int = carica disponibile, Range = range del tof relativo a quella carica
 
+
+    bool Generator();
     
 public:
-    DataSet(/* args */);
+    DataSet(Range<int> range,const Bethe_Block BB, std::vector<int> N_particles, std::vector<Range<double>> tof_range);
     ~DataSet();
 };
 
-DataSet::DataSet(/* args */)
+DataSet::DataSet(Range<int> range,const Bethe_Block BB, std::vector<int> N_particles, std::vector<Range<double>> tof_range) : _BB{BB}
 {
+    for(auto i = range.min; i < range.max;i++)
+        if(tof_range.at(i).empty != true)
+            _map_charge_tof[i] = tof_range.at(i);
+
+    Generate();
+
+    
 }
 
 DataSet::~DataSet()
@@ -67,8 +81,8 @@ private:
     Bethe_Block* _BB;
     
 
-    bool _ToF_Generator(const int N = 1E3/*Numbers of data generated*/);
-    bool _dE_Generator(const int N = 1E3/*Numbers of data generated*/);
+    bool _ToF_Generator(const int N = 1E3/*Numbers of particles generated*/);
+    bool _dE_Generator(const RooDataSet* ToF_Data, const double& L);
 
 
 public:
