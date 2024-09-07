@@ -68,7 +68,7 @@ public:
 
 
     //FINAL COMPUTATIONS
-    double dE_dx(const double& z, const double& tof);
+    double dE(const double& z, const double& tof);
     double z_squared(double dE, double tof);
 
 };
