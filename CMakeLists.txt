@@ -29,4 +29,3 @@ target_link_libraries(Bethe_Block PUBLIC ROOT::RooRealVar)
 target_link_libraries(Bethe_Block PUBLIC ROOT::RooGaussian)
 target_link_libraries(Bethe_Block PUBLIC ROOT::RooDataSet)
 target_link_libraries(Bethe_Block PUBLIC ROOT::TRandom3)
->>>>>>> Stashed changes

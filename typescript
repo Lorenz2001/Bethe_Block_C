@@ -1,0 +1,596 @@
+Script started on 2024-08-31 18:50:03+02:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="120" LINES="30"]
+bash: export: `DISPLAY:=0': not a valid identifier
+bash: /home/prog_linux/root/bin/thisroot.sh: No such file or directory
+bash: /root/bin/thisroot.sh: Permission denied
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software[00m$ ./script.sh 
+[?2004l-- The C compiler identification is GNU 11.2.0
+-- The CXX compiler identification is GNU 11.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+[31mCMake Error at CMakeLists.txt:6 (find_package):
+  Could not find a package configuration file provided by "ROOT" (requested
+  version 6.16) with any of the following names:
+
+    ROOTConfig.cmake
+    root-config.cmake
+
+  Add the installation prefix of "ROOT" to CMAKE_PREFIX_PATH or set
+  "ROOT_DIR" to a directory containing one of the above files.  If "ROOT"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+
+[0m
+-- Configuring incomplete, errors occurred!
+See also "/mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software/build/CMakeFiles/CMakeOutput.log".
+CMake configuration failed
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software[00m$ [K]0;prog_linux@MSI: /mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software[00m$ mv Downloads
+[?2004lmv: missing destination file operand after 'Downloads'
+Try 'mv --help' for more information.
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Desktop/Magistrale/Electronics/Software[00m$ cd ...[K
+[?2004l[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Desktop/Magistrale/Electronics[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Desktop/Magistrale/Electronics[00m$ cd --
+[?2004l[?2004h]0;prog_linux@MSI: ~[01;32mprog_linux@MSI[00m:[01;34m~[00m$ cd c[Kmn[K[K[K[K[Kls
+[?2004l[0m[01;34mFOOT_Experiment[0m  [01;34mPython[0m  [01;34mPython-3.4.3[0m  [01;31mPython-3.4.3.tgz[0m  [01;34mROOT[0m  [01;34mroot_b[0m  [01;34mSistemi_Complessi[0m  [01;34mStatistical_data[0m
+[?2004h]0;prog_linux@MSI: ~[01;32mprog_linux@MSI[00m:[01;34m~[00m$ cd. [K[K ..
+[?2004l[?2004h]0;prog_linux@MSI: /home[01;32mprog_linux@MSI[00m:[01;34m/home[00m$ cd[K[Kls
+[?2004l[0m[01;34mprog_linux[0m
+[?2004h]0;prog_linux@MSI: /home[01;32mprog_linux@MSI[00m:[01;34m/home[00m$ cd ..
+[?2004l[?2004h]0;prog_linux@MSI: /[01;32mprog_linux@MSI[00m:[01;34m/[00m$ cls[K[K[Kls
+[?2004l[0m[01;36mbin[0m   [01;34mdev[0m  [01;34mhome[0m  [01;36mlib[0m    [01;36mlib64[0m   [01;34mlost+found[0m  [01;34mmnt[0m  [01;34mproc[0m  [01;34mrun[0m   [01;34msnap[0m  [01;34msys[0m  [01;34musr[0m
+[01;34mboot[0m  [01;34metc[0m  [01;32minit[0m  [01;36mlib32[0m  [01;36mlibx32[0m  [01;34mmedia[0m       [01;34mopt[0m  [01;34mroot[0m  [01;36msbin[0m  [01;34msrv[0m   [30;42mtmp[0m  [01;34mvar[0m
+[?2004h]0;prog_linux@MSI: /[01;32mprog_linux@MSI[00m:[01;34m/[00m$ cd mnt/
+[?2004l[?2004h]0;prog_linux@MSI: /mnt[01;32mprog_linux@MSI[00m:[01;34m/mnt[00m$ CD C[K[K[K[Kcd c/User
+[?2004lbash: cd: c/User: No such file or directory
+[?2004h]0;prog_linux@MSI: /mnt[01;32mprog_linux@MSI[00m:[01;34m/mnt[00m$ cd [K[K[Kls
+[?2004l[0m[34;42mc[0m  [34;42md[0m  [30;42mwsl[0m
+[?2004h]0;prog_linux@MSI: /mnt[01;32mprog_linux@MSI[00m:[01;34m/mnt[00m$ cd c
+[?2004l[?2004h]0;prog_linux@MSI: /mnt/c[01;32mprog_linux@MSI[00m:[01;34m/mnt/c[00m$ ce[K[Kd[Kcd us
+[?2004lbash: cd: us: No such file or directory
+[?2004h]0;prog_linux@MSI: /mnt/c[01;32mprog_linux@MSI[00m:[01;34m/mnt/c[00m$ cd use[K[K[K[K User
+[?2004lbash: cd: User: No such file or directory
+[?2004h]0;prog_linux@MSI: /mnt/c[01;32mprog_linux@MSI[00m:[01;34m/mnt/c[00m$ ls
+[?2004lls: cannot access 'DumpStack.log.tmp': Permission denied
+ls: cannot access 'hiberfil.sys': Permission denied
+ls: cannot access 'pagefile.sys': Permission denied
+ls: cannot access 'swapfile.sys': Permission denied
+[0m[34;42m'$Recycle.Bin'[0m                          [01;34mflexlm[0m           [34;42mMSI[0m           [01;34m'Program Files'[0m              [34;42m'User Manual'[0m
+ [34;42m29881C69-E385-4B51-8BDD-544860619E8D[0m   hiberfil.sys     [34;42mmsys64[0m        [01;34m'Program Files (x86)'[0m         [01;34mUsers[0m
+ [01;32mappverifUI.dll[0m                         [34;42mIntel[0m            [34;42mOneDriveTemp[0m   [01;36mProgrammi[0m                    [01;32mvfcompat.dll[0m
+[01;36m'Documents and Settings'[0m                [34;42mintelFPGA[0m        pagefile.sys   [01;34mRecovery[0m                     [01;34mWindows[0m
+ DumpStack.log                          [34;42mintelFPGA_lite[0m   [34;42mPerfLogs[0m       swapfile.sys                 [34;42mXboxGames[0m
+ DumpStack.log.tmp                      [34;42mMicrosoft[0m        [34;42mProgramData[0m   [01;34m'System Volume Information'[0m
+[?2004h]0;prog_linux@MSI: /mnt/c[01;32mprog_linux@MSI[00m:[01;34m/mnt/c[00m$ cd utente
+[?2004lbash: cd: utente: No such file or directory
+[?2004h]0;prog_linux@MSI: /mnt/c[01;32mprog_linux@MSI[00m:[01;34m/mnt/c[00m$ cd User
+[?2004lbash: cd: User: No such file or directory
+[?2004h]0;prog_linux@MSI: /mnt/c[01;32mprog_linux@MSI[00m:[01;34m/mnt/c[00m$ cd Users
+[?2004l[?2004h]0;prog_linux@MSI: /mnt/c/Users[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users[00m$ ls
+[?2004l[0m[01;36m'All Users'[0m   [01;34mDefault[0m  [01;36m'Default User'[0m   [01;32mdesktop.ini[0m   [34;42mPublic[0m   [34;42mutente[0m
+[?2004h]0;prog_linux@MSI: /mnt/c/Users[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users[00m$ cd utente/
+[?2004l[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente[00m$ ls
+[?2004l[0m[34;42m'3D Objects'[0m
+ [01;32m9fcJL5wAOTi[0m
+ [34;42mansel[0m
+ [34;42mAppData[0m
+[34;42m'Application Data'[0m
+ [34;42mContacts[0m
+ [01;36mCookies[0m
+[01;36m'Dati applicazioni'[0m
+ [34;42mDesktop[0m
+ [01;36mDocumenti[0m
+ [34;42mDocuments[0m
+ [34;42mDownloads[0m
+ [34;42mEasternGraphics[0m
+ [34;42mFavorites[0m
+[01;36m'Impostazioni locali'[0m
+ [34;42mLinks[0m
+[01;36m'Menu Avvio'[0m
+ [01;36mModelli[0m
+ [34;42mMusic[0m
+ [01;32mNTUSER.DAT[0m
+ [01;32mNTUSER.DAT{47ea0d1b-0ac7-11ee-9f64-010101010000}.TM.blf[0m
+ [01;32mNTUSER.DAT{47ea0d1b-0ac7-11ee-9f64-010101010000}.TMContainer00000000000000000001.regtrans-ms[0m
+ [01;32mNTUSER.DAT{47ea0d1b-0ac7-11ee-9f64-010101010000}.TMContainer00000000000000000002.regtrans-ms[0m
+ [01;32mntuser.dat.LOG1[0m
+ [01;32mntuser.dat.LOG2[0m
+ [01;32mntuser.ini[0m
+ [34;42mOneDrive[0m
+ [34;42mPictures[0m
+ [34;42mproject_1[0m
+ [01;32mquartus2.ini[0m
+ [01;32mquartus2.qreg[0m
+ [01;32mquartus2.qreg.DltaaI[0m
+ [01;36mRecenti[0m
+[01;36m'Risorse di rete'[0m
+[01;36m'Risorse di stampa'[0m
+ [34;42mroot[0m
+[34;42m'Saved Games'[0m
+ [34;42mSearches[0m
+ [01;36mSendTo[0m
+ [34;42msource[0m
+ [34;42mTracing[0m
+ [34;42mVideos[0m
+[34;42m'VirtualBox VMs'[0m
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente[00m$ cd Downloads/
+[?201;32mquartus2.qreg[0m
+ [01;32mquartus2.qreg.DltaaI[0m
+ [01;36mRecenti[0m
+[01;36m'Risorse di rete'[0m
+[01;36m'Risorse di stampa'[0m
+ [34;42mroot[0m
+[34;42m'Saved Games'[0m
+ [34;42mSearches[0m
+ [01;36mSendTo[0m
+ [34;42msource[0m
+ [34;42mTracing[0m
+ [34;42mVideos[0m
+[34;42m'VirtualBox VMs'[0m
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente[00m$ cd Downloads/
+[?2004l[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads[00m$ ls
+[?2004l[0m[01;32m'~$proceedings - Rev 02.docx'[0m
+ [01;32m0029558261904692.bib[0m
+ [01;32m0029558261904692.bib.bak[0m
+ [01;32m0370269386912682.bib[0m
+ [01;32m0370269386912682.bib.bak[0m
+ [01;32m0hksVhSC.htm[0m
+ [01;32m0_introduction.pdf[0m
+ [01;32m10.1140_epjc_s10052-016-4271-x-citation.ris[0m
+ [01;32m10.3389-fonc.2016.00116-citation.bib[0m
+ [01;32m10.3389-fonc.2016.00116-citation.bib.bak[0m
+ [01;32m10.3389-fphy.2020.568242-citation.bib[0m
+ [01;32m10.3389-fphy.2020.568242-citation.bib.bak[0m
+ [01;32m174037-b2-first-sample-paper-1.zip[0m
+ [01;32m1_interactions.pdf[0m
+ [01;32m1PvpBIjo.htm[0m
+[01;32m'2023 01 26 FlaourPhysicsExam_mod2.pdf'[0m
+[01;32m'2023 02 23 FlaourPhysicsExam_mod2.pdf'[0m
+[01;32m'2023 06 23 FlaourPhysicsExam_mod2.pdf'[0m
+[01;32m'2023 12 21 FlavourPhysicsExam_mod2.pdf'[0m
+[01;32m'2024 01 26 FlavourPhysicsExam_mod2.pdf'[0m
+[01;32m'2024 02 08 FlavourPhysicsExam_mod2.pdf'[0m
+[01;32m'2108.06151 (1)-1.pdf'[0m
+[01;32m'2108.06151 (1).pdf'[0m
+ [01;32m21540489.nbib[0m
+ [01;32m26507.pdf[0m
+ [01;32m26508-1.pdf[0m
+ [01;32m26508-2.pdf[0m
+ [01;32m26508.pdf[0m
+ [01;32m2a_Lez_MGV_FNSN_2020.pdf[0m
+ [01;32m2_invariances.pdf[0m
+ [01;32m321CmvVV.htm[0m
+ [01;32m3_collisions.pdf[0m
+[01;32m'41571_2017_BFnrclinonc201730_MOESM149_ESM(1).ppt'[0m
+[01;32m'41571_2017_BFnrclinonc201730_MOESM149_ESM(2).ppt'[0m
+[01;32m'41571_2017_BFnrclinonc201730_MOESM150_ESM(1).ppt'[0m
+[01;32m'41571_2017_BFnrclinonc201730_MOESM151_ESM(1).ppt'[0m
+[01;32m'41571_2017_BFnrclinonc201730_MOESM156_ESM(1).ppt'[0m
+[01;32m'41571_2017_BFnrclinonc201730_MOESM156_ESM(2).ppt'[0m
+ [01;32m43hxHZOi.htm[0m
+ [01;32m4kvideodownloader_4.23.0_x64_online.exe[0m
+ [01;32m4_weak.pdf[0m
+ [01;32m555.99-notebook-win10-win11-64bit-international-dch-whql.exe[0m
+ [01;32m5PtWVJhs.htm[0m
+ [01;32m7z2107-x64.exe[0m
+ [01;32m7z2201-x64.exe[0m
+ [01;32m9781009291200.pdf[0m
+ [01;32m978-3-031-33386-6.pdf[0m
+ [01;32mabs-guide.html.tar.gz[0m
+[01;32m'adroterapia_2022(1).pptx'[0m
+[01;32m'adroterapia_2022(2).pptx'[0m
+ [01;32madroterapia_2022.pptx[0m
+[01;32m'Allegato 1_requisiti linguistici_modalit&.pdf'[0m
+[01;32m'Allegato 4_corsi interamente impartiti in lingua inglese_def.xlsx'[0m
+ [01;32maltera_installer.external.exe[0m
+ [01;32maMLXvPZx.htm[0m
+ [01;32mAnswer.txt[0m
+[01;32m'Appendice_qualita_trattamento_dati analitici_pratiche_laboratorio(1).doc'[0m
+[01;32m'Appendice_qualita_trattamento_dati analitici_pratiche_laboratorio.doc'[0m
+ [01;32mARIADNE.cpp[0m
+ [01;32marXiv-2309.06042v3.tar.gz[0m
+ [34;42mAS-SSD-Benchmark2.0.7316[0m
+ [01;32mAS-SSD-Benchmark2.0.7316.zip[0m
+ [01;32mATLAS.cpp[0m
+ [01;32matlas-higgs-challenge-2014-v2.csv[0m
+ [01;32maudacity-win-3.1.3-64bit.exe[0m
+ [01;32maudacity-win-3.2.3-x64.exe[0m
+ [01;32mautocertificazione.pdf[0m
+ [01;32mbalenaEtcher-Portable-1.7.9.exe[0m
+[01;32m'Bando Erasmus+ studio 23_24_ITA_emendato_pubblicazione.pdf'[0m
+[01;32m'Bando Erasmus studio 24_25_ITA_def.pdf'[0m
+ [01;32mbasic-miktex-22.3-x64.exe[0m
+ [01;32mBDT_cut_efficiencies.png[0m
+ [01;32mBDT_test_sample_vs_training_sample.png[0m
+ [01;32mBF02650179.pdf[0m
+ [01;32mBF02824673.pdf[0m
+ [01;32mbN1fZac3.htm[0m
+ [01;32mcalcolo.zip[0m
+ [01;32mCalendarioaccademico2023_24.pdf[0m
+[01;32m'Call for applications_PHYSICS_a.y._23-24_ENG.pdf'[0m
+[01;32m'CambridgeCore_Citation_19Jun2024 (1).txt'[0m
+ [01;32mCambridgeCore_Citation_19Jun2024.txt[0m
+[01;32m'Cap 1 - La sostenibilità v11.docx'[0m
+[01;32m'Cap 1 - La sostenibilità v11.pdf'[0m
+[01;32m'cap 2.pdf'[0m
+[01;32m'Carlotta'\''s_beautiful_appunty(1).7z'[0m
+[01;32m"Carlotta's_beautiful_appunty.7z"[0m
+ [01;32mcarriera-1.pdf[0m
+ [01;32mcarriera.pdf[0m
+ [01;32mCB.png[0m
+ [01;32mchromeremotedesktophost.msi[0m
+ [01;32mChromeSetup.exe[0m
+ [01;32mcircuit.png[0m
+ [01;32mcitations-20240619T162905.bibtex[0m
+ [01;32mcitations-20240625T175522.bibtex[0m
+ [01;32mCoffeeCup-HTML-Editor-trial-win-en-16.1-808.exe[0m
+ [01;32mCourseSC2324_Lecture9_tmp-1.pdf[0m
+ [01;32mCourseSC2324_Lecture9_tmp-2.pdf[0m
+ [01;32mCourseSC2324_Lecture9_tmp-3.pdf[0m
+ [01;32mCourseSC2324_Lecture9_tmp.pdf[0m
+[01;32m'Criteri voto laurea Ing Gestionale.pdf'[0m
+[01;32m'Cruscotto_001(1).xlsm'[0m
+[01;32m'Cruscotto_001(2).xlsm'[0m
+[01;32m'Cruscotto_001(3).xlsm'[0m
+ [01;32mCruscotto_001.xlsm[0m
+ [01;32mCV5916983-1.pdf[0m
+ [01;32mCV5916983.pdf[0m
+ [01;32mCV_Pepa_Lorenzo.pdf[0m
+[01;32m'Decadimenti Radioattivi 2.pdf'[0m
+ [01;32mDECAYRATE-1.pdf[0m
+ [01;32mDECAYRATE.pdf[0m
+ [01;32mdesktop.ini[0m
+ [01;32mDev_C___v6.3.zip[0m
+[01;32m'Disp_FNSN(7a_Lez_2019_+Fiss).pdf'[0m
+ [01;32mdomandaLaurea-1.pdf[0m
+ [01;32mdomandaLaurea.pdf[0m
+ [01;32md-pinci-abstract.doc[0m
+ [34;42mE16V5IMS.10F[0m
+ [01;32mE16V5IMS.10F.zip[0m
+[01;32m'ELEMENTI_Intro_lezI (1).pdf'[0m
+ [01;32mELEMENTI_Intro_lezI.pdf[0m
+ [01;32mELEMENTI_lezIII.pdf[0m
+ [01;32mELEMENTI_lezI_lezII.pdf[0m
+ [01;32mELEMENTI_lezIV.pdf[0m
+ [01;32mELEMENTI_lezIX_ultrasuoni.pdf[0m
+ [01;32mELEMENTI_lezVIII.pdf[0m
+ [01;32mELEMENTI_lezVII_MRI_fMRI.pdf[0m
+ [01;32mELEMENTI_lezVI.pdf[0m
+ [01;32mELEMENTI_lezV.pdf[0m
+ [01;32mELENCOtesitriennali.pdf[0m
+ [01;32mEQaSthqY.htm[0m
+[01;32m'Esercizi 1-5.pdf'[0m
+ [01;32mEsercizi_2.pdf[0m
+[01;32m'esercizi OTTICA FISICA 4AS 2016.doc'[0m
+[01;32m'eset_nod32_antivirus_live_installer(1).exe'[0m
+ [01;32meset_nod32_antivirus_live_installer.exe[0m
+[01;32m'esiti scritto 9 giugno 2023.pdf'[0m
+ [01;32mex_12_2.cpp[0m
+ [01;32mex16.cpp[0m
+ [01;32mex_2023_1.cpp[0m
+[01;32m'Exercises 1.pdf'[0m
+[01;32m'F24OnLine(1).jnlp'[0m
+ [01;32mF24OnLine.jnlp[0m
+ [01;32mfeynman.png[0m
+ [01;32mFile.eml[0m
+ [01;32mFinal_grade_calculation.xlsx[0m
+[01;32m'Firefox Installer.exe'[0m
+ [34;42mFirmware[0m
+[34;42m'Firmware(1)'[0m
+[01;32m'Firmware(1).zip'[0m
+ [01;32mFirmware.zip[0m
+ [01;32mFirst_notes_22mar20.pdf[0m
+[01;32m'Fis_Rel14_9Mag2022(1).49cf1V1V.pptx.part'[0m
+[01;32m'Fis_Rel14_9Mag2022(1).pptx'[0m
+[01;32m'Fis_Rel14_9Mag2022(2).pptx'[0m
+ [01;32mFis_Rel14_9Mag2022.pptx[0m
+ [01;32mfityk-1.3.1-setup.exe[0m
+ [01;32mFlaourPhysicsExam_1.pdf[0m
+ [01;32mFlaourPhysicsExam_2.pdf[0m
+ [01;32mFlaourPhysicsExam_3.pdf[0m
+ [01;32mFlaourPhysicsExam_4.pdf[0m
+ [01;32mFoldit-win_x64.exe[0m
+ [01;32mfondamenti-dosimetria-radiazioni_ionizzanti-5a-ed-1.pdf[0m
+ [01;32mfondamenti-dosimetria-radiazioni_ionizzanti-5a-ed.pdf[0m
+ [01;32mFPGAs_AdaptiveSoCs_Unified_2023.2_1013_2256_Win64.exe[0m
+ [01;32mFrontespizio_latex.docx[0m
+ [01;32mFWVhOnwA.htm[0m
+ [01;32mGauss.png[0m
+ [01;32mGeoGebraCalculator-Windows-Installer-6-0-706-0.exe[0m
+ [01;32mGeoGebraCAS-Windows-Installer-6-0-706-0.exe[0m
+ [01;32mGeoGebraGeometry-Windows-Installer-6-0-706-0.exe[0m
+ [01;32mGeoGebraGraphing-Windows-Installer-6-0-706-0.exe[0m
+ [01;32mGit-2.39.2-64-bit.exe[0m
+ [01;32mGitHubDesktopSetup-x64.exe[0m
+[01;32m'GitKrakenSetup(1).exe'[0m
+ [01;32mGitKrakenSetup.exe[0m
+ [01;32mGroup_4R_Report_Measurement_of_muon_lifetime-1.pdf[0m
+ [01;32mGroup_4R_Report_Measurement_of_muon_lifetime.pdf[0m
+ [01;32mGSI2021_MC_ntupla.root[0m
+ [01;32mGuidaInstallazioneRoot-V6-FinestraGraficasuWSL-1.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-FinestraGraficasuWSL-2.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-FinestraGraficasuWSL.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-UBUNTU-1up-x64.exe[0m
+[01;32m'GitKrakenSetup(1).exe'[0m
+ [01;32mGitKrakenSetup.exe[0m
+ [01;32mGroup_4R_Report_Measurement_of_muon_lifetime-1.pdf[0m
+ [01;32mGroup_4R_Report_Measurement_of_muon_lifetime.pdf[0m
+ [01;32mGSI2021_MC_ntupla.root[0m
+ [01;32mGuidaInstallazioneRoot-V6-FinestraGraficasuWSL-1.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-FinestraGraficasuWSL-2.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-FinestraGraficasuWSL.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-UBUNTU-1.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-UBUNTU-2.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-UBUNTU-BinaryDist-1.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-UBUNTU-BinaryDist-2.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-UBUNTU-BinaryDist.pdf[0m
+ [01;32mGuidaInstallazioneRoot-V6-UBUNTU.pdf[0m
+ [01;32mGuidaReclutamentoOnLine-1.pdf[0m
+ [01;32mGuidaReclutamentoOnLine.pdf[0m
+ [34;42mHandle[0m
+ [01;32mHandle.zip[0m
+ [01;32mheaders.zip[0m
+ [01;32mhLLQcCHc.htm[0m
+[01;32m'i2c_master(1).vhd'[0m
+ [01;32mi2c_master.vhd[0m
+ [01;32mi2cslave.vhd[0m
+[01;32m'IEEE Xplore Reference Download 2023.10.3.18.25.50.txt'[0m
+ [01;32mimHGUxc7.htm[0m
+[01;32m'inproceedings - Rev 02.docx'[0m
+ [34;42mintelFPGA_lite_23.1std[0m
+[34;42m'Intel ME Update Tool_ME16125_H_P_U'[0m
+[01;32m'Intel ME Update Tool_ME16125_H_P_U.zip'[0m
+ [01;32mIntroductionParticlePhysics-Mod2.pptx[0m
+ [01;32mIntroduzione_AA2023.pptx[0m
+ [01;32mIOPEXPORT_BIB.bib[0m
+ [01;32mIOPEXPORT_BIB.bib.bak[0m
+ [01;32mit-pdfelement-pro_64bit_full5480.exe[0m
+[01;32m'it-pdfelement-pro_setup_full5480(1).exe'[0m
+ [01;32mit-pdfelement-pro_setup_full5480.exe[0m
+ [01;32mjaxodraw-2.1-0-src.tar.gz[0m
+ [01;32mjdk-22_windows-x64_bin.exe[0m
+ [01;32mjre-8u411-windows-x64.exe[0m
+ [01;32mkali-linux-2022.2-live-amd64.iso[0m
+ [01;32mkali-linux-2022.4-virtualbox-amd64.7z.torrent[0m
+ [01;32mKap_02.pdf[0m
+[01;32m'K in K0.png'[0m
+ [01;32mLab2-main.zip[0m
+ [01;32mLab2relazio-1.pdf[0m
+ [01;32mLab2relazio-2.pdf[0m
+ [01;32mLab2relazio-3.pdf[0m
+ [01;32mLab2relazio.pdf[0m
+ [01;32mLabNSN2_Ranzani_Scans.xlsx[0m
+ [01;32mlaContraccezione.pdf[0m
+[01;32m'lezione_11_(13.12.2022)-1.pdf'[0m
+[01;32m'lezione 11 (13.12.2022).pdf'[0m
+[01;32m'lezione_11_(13.12.2022).pdf'[0m
+[01;32m'lezione 12 (14.12.2022).pdf'[0m
+[01;32m'lezione_12_(14.12.2022).pdf'[0m
+[01;32m'lezione 13 (20.12.2022).pages'[0m
+[01;32m'lezione_13_(20.12.2022).pdf'[0m
+[01;32m'lezione 14 (21.12.2022) .pages'[0m
+[01;32m'lezione_14_(21.12.2022)_.pdf'[0m
+ [01;32mLezione2-1.pdf[0m
+ [01;32mLezione2.pdf[0m
+[01;32m'Lezione 4 - Meccanica del continuo-tensore di deformazione-1.pdf'[0m
+[01;32m'Lezione 4 - Meccanica del continuo-tensore di deformazione.pdf'[0m
+[01;32m'LHCb(1).cpp'[0m
+[01;32m'LHCb(2).cpp'[0m
+ [01;32mLHCb.cpp[0m
+ [01;32mLIPS-1.pdf[0m
+ [01;32mLIPS.pdf[0m
+[01;32m'Måneskin_-_THE_LONELIEST_Official_Audio_with_lyrics[grabfrom.com](1).mp4'[0m
+[01;32m'Måneskin_-_THE_LONELIEST_Official_Audio_with_lyrics[grabfrom.com].mp4'[0m
+[01;32m'Manuali-Ecdl_v1[1].zip'[0m
+[01;32m'Mark Thomson - Modern Particle Physics (2013, Cambridge University Press) - libgen.li.pdf'[0m
+ [01;32mMASetup.exe[0m
+ [01;32mmatlab_R2022a_win64.exe[0m
+ [01;32mmicrosoft-mathematics-4-71-1015-0.exe[0m
+ [01;32mmikimos,+Journal+manager,+wpph-2015-1-21.pdf[0m
+ [01;32mMINOS.cpp[0m
+ [01;32mMLPBNN_cut_efficiencies.png[0m
+ [01;32mMLPBNN_test_sample_vs_training_sample.png[0m
+ [01;32mMobaXterm_Installer_v22.0.zip[0m
+ [01;32mMobaXterm_Installer_v22.1.zip[0m
+ [34;42mMobaXterm_Portable_v22.1[0m
+ [01;32mMobaXterm_Portable_v22.1.zip[0m
+ [01;32mModelSimSetup-20.1.1.720-windows.exe[0m
+ [01;32mModern-Warfare-Setup.exe[0m
+[01;32m'MODULO GENERICO piano di studio.pdf'[0m
+ [34;42mMonitoring[0m
+ [01;32mMonitoring.zip[0m
+ [01;32mMouseKeyboardCenter_64bit_ITA_14.41.exe[0m
+[01;32m'MSI companion - Installer.exe'[0m
+ [01;32mmsys2-x86_64-20220603.exe[0m
+ [01;32mMuse_Hub.exe[0m
+ [01;32mMuseScore-3.6.2.548021803-x86_64.msi[0m
+ [01;32mNew_Music.mp3[0m
+ [01;32mnrclinonc.2017.30.pdf[0m
+ [01;32mnrg2380.pdf[0m
+ [01;32mnvcGM9My.htm[0m
+ [01;32mOBS-Studio-27.2.4-Full-Installer-x64.exe[0m
+ [01;32mOPERA.cpp[0m
+ [01;32more_5_6_13_ott_2014.pptx[0m
+ [01;32moUT78yPq.htm[0m
+ [01;32mOxJ9_1jc.htm[0m
+ [01;32mpCon.planner_Std_setup.exe[0m
+ [01;32mPepa_Lorenzo_Autocertificazione_Laurea_con_votazione-1.pdf[0m
+ [01;32mPepa_Lorenzo_Autocertificazione_Laurea_con_votazione.pdf[0m
+ [01;32mPepa_Lorenzo_Presentazione_Laurea.pdf[0m
+ [01;32mPhysRevLett.9.36.bibtex[0m
+ [01;32mPMT1log.pdf[0m
+ [01;32mPMT1wirlog.pdf[0m
+ [01;32mPMT2log.pdf[0m
+ [01;32mPMT2wirlog.pdf[0m
+ [01;32mPMT3log.pdf[0m
+ [01;32mPMT3wirlog.pdf[0m
+ [01;32mppdf-standard-free-trial-3-1-0-1-ra908.exe[0m
+ [01;32mprepare_dataset.cpp[0m
+ [01;32mPresentazione_esperimento_FOOT_SColombi-1.pdf[0m
+ [01;32mPresentazione_esperimento_FOOT_SColombi.pdf[0m
+[01;32m'prob_sol _ QFT1.pdf'[0m
+ [01;32mprog_quant_partial_22_23.rtf[0m
+ [01;32mPython101.ipynb[0m
+ [01;32mpython-3.11.1-amd64.exe[0m
+[01;32m'QDM_03_Tensori(1).ppt'[0m
+ [01;32mQDM_03_Tensori.ppt[0m
+[01;32m'QFT1 NOTES united-1.pdf'[0m
+[01;32m'QFT1 NOTES united.pdf'[0m
+ [01;32mqinst-lite-windows-23.1std-991.exe[0m
+ [01;32mquantum-field-theory-i-uni-mainz-de-1.pdf[0m
+ [01;32mquantum-field-theory-i-uni-mainz-de-2.pdf[0m
+ [01;32mquantum-field-theory-i-uni-mainz-de-3.pdf[0m
+ [01;32mquantum-field-theory-i-uni-mainz-de.pdf[0m
+ [01;32mQuartus-lite-20.1.1.720-windows.tar[0m
+ [01;32mreaper673_x64-install.exe[0m
+ [01;32mrelazione.txt[0m
+ [01;32mreshacker_setup.exe[0m
+ [01;32mROC_curve.png[0m
+ [01;32mroot-framework-installer-main.zip[0m
+ [01;32mroot_v6.20.02.Linux-ubuntu19-x86_64-gcc8.3.tar.gz[0m
+ [01;32mroot_v6.20.02.source.tar.gz[0m
+ [01;32mroot_v6.28.06.Linux-ubuntu22-x86_64-gcc11.4.tar.gz[0m
+ [01;32mroot_v6.30.02.Linux-ubuntu22.04-x86_64-gcc11.4.tar.gz[0m
+ [01;32mS0031916364920013.bib[0m
+ [01;32mS0031916364920013.bib.bak[0m
+ [01;32mSC2324_Lectures-20240806T134557Z-001.zip[0m
+ [01;32mscreenCapture.exe[0m
+ [01;32msda-nsnp-lab-tutorial-2022-2-1.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2022-2-2.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2022-2.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-1-1.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-1-2.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-1-3.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-1-4.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-1-5.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-1-6.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-1.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-3-1.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-3-2.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-3.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-4-1.pdf[0m
+ [01;32msda-nsnp-lab-tutorial-2023-24-4.pdf[0m
+ [01;32mSetupIperius.exe[0m
+[01;32m'SLIDES LEZIONE 6 Dispensa I2C Interface.pdf'[0m
+ [01;32mStatistical_Methods_in_Experimental_Physics.pdf[0m
+ [01;32mstellarium-0.22.1-win64.exe[0m
+ [01;32mSubnuclear-1.pdf[0m
+ [01;32mSubnuclear-2.pdf[0m
+ [01;32mSubnuclear-3.pdf[0m
+ [01;32mSubnuclear-4.pdf[0m
+ [01;32mSubnuclear_f-1.pdf[0m
+ [01;32mSubnuclear_fina-1.pdf[0m
+ [01;32mSubnuclear_fina.pdf[0m
+ [01;32mSubnuclear_fina.zip[0m
+ [01;32mSubnuclear_f.pdf[0m
+ [01;32mSubnuclear_new__Copy_.pdf[0m
+ [01;32mSubnuclear.pdf[0m
+ [01;32mtabella-delle-costanti-fisiche-fondamentali-excel.xlsx[0m
+ [01;32mtb_i2cslave_read.vhd[0m
+ [01;32mtb_i2cslave_write.vhd[0m
+ [01;32mTeamsSetup_c_w_.exe[0m
+ [01;32mtemplate_cv_it.doc[0m
+ [34;42m_temp_matlab_R2022a_win64[0m
+ [01;32mTerza_prova_N-1.pdf[0m
+ [01;32mTerza_prova_N.pdf[0m
+ [01;32mTesi___2-1.pdf[0m
+ [01;32mTesi___2-2.pdf[0m
+ [01;32mTesi___2-3.pdf[0m
+ [01;32mTesi___2-4.pdf[0m
+ [01;32mTesi___2.pdf[0m
+ [01;32mTesi_diritti_autore.pdf[0m
+ [01;32mTesi_Pepa-1-1.pdf[0m
+ [01;32mTesi_Pepa-1.pdf[0m
+ [01;32mTesi_Pepa_Lorenzo-1.pdf[0m
+ [01;32mTesi_Pepa_Lorenzo.pdf[0m
+ [01ncher_1.0.3.394-jlziear0m.exe[0m
+ [01;32mXMouseButtonControlSetup.2.20.5.exe[0m
+ [01;32my8-browser-web-setup-1.0.10.exe[0m
+ [01;32myoutube-dl.exe[0m
+ [01;32mZELOTES+F-15+Dual-Mode+Programming+Mouse+Driver+2021.04.19.zip[0m
+ [01;32mZoom_cm_ftf8Z9vvrxvyZivr_msjgMiK0SUEtrRUDVvrPUcWhHphwYozH2I28@CHa218YFwMUspBFf_k6992b79ab5afe2b5_.exe[0m
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads[00m$ unzip root-framework-installer-main.zip 
+[?2004lCommand 'unzip' not found, but can be installed with:
+sudo apt install unzip
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads[00m$ unzip root-framework-installer-main.zip ls[Kcd Downloads/ls[Kcd utente/ls[Kcd Users[Kutentels[Kcd User[2Pus[1Pc[2Plscd c/User[2Pmnt/ls[Kcd ..[3Plscd ..[3Plscd --..mv Downloads./script.sh explorer.exe .ls[Kgunzip atlas-higgs-challenge-2014-v2.csv.gz ls[Kexit[1Psc[1P.qcd --[3Plscd --[3P.qescxit[2Plsgunzip atlas-higgs-challenge-2014-v2.csv.gz ls[Kexplorer.exe .[2P./script.sh mv Downloads[7Pcd ..--[3Plscd ..[3Plscd ..[3Plscd mnt/c/Userls[Kcd cusUserls[Kcd utente[2PUsersls[Kcd utente/ls[Kcd Downloads/ls[Kunzip root-framework-installer-main.zip [Kunzip root-framework-installer-main.zip [1@g
+[?2004lgzip: root-framework-installer-main.zip: unknown suffix -- ignored
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads[00m$ gunzip root-framework-installer-main.zip [1P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls[Kcd Downloads/ls[Kcd utente/ls[Kcd Users[Kutentels[Kcd User[2Pus[1Pc[2Plscd c/User[2Pmnt/ls[Kcd ..[3Plscd ..[3Plscd --..mv Downloads./script.sh explorer.exe .ls[Kgunzip atlas-higgs-challenge-2014-v2.csv.gz ls[Kgunzip atlas-higgs-challenge-2014-v2.csv.gz ls[Kexplorer.exe .[2P./script.sh mv Downloads[7Pcd ..--[3Plscd ..[3Plscd ..[3Plscd mnt/c/Userls[Kcd cusUserls[Kcd utente[2PUsersls[Kcd utente/ls[Kcd Downloads/ls[Kunzip root-framework-installer-main.zip [1@g[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kgunzip root-framework-installer-main.zip [1P
+[?2004lCommand 'unzip' not found, but can be installed with:
+sudo apt install unzip
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads[00m$ sudo apt install unzip
+[?2004l[sudo] password for prog_linux: 
+Sorry, try again.
+[sudo] password for prog_linux: 
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+Suggested packages:
+  zip
+The following NEW packages will be installed:
+  unzip
+0 upgraded, 1 newly installed, 0 to remove and 238 not upgraded.
+Need to get 175 kB of archives.
+After this operation, 386 kB of additional disk space will be used.
+[33m0% [Working][0m            Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 unzip amd64 6.0-26ubuntu3.2 [175 kB]
+[33m1% [1 unzip 1,136 B/175 kB 1%][0m[33m                              100% [Working][0m              Fetched 175 kB in 1s (219 kB/s)
+
+7[0;28r8[1ASelecting previously unselected package unzip.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 60609 files and directories currently installed.)
+Preparing to unpack .../unzip_6.0-26ubuntu3.2_amd64.deb ...
+7[29;0f[42m[30mProgress: [  0%][49m[39m [..................................................................................................] 87[29;0f[42m[30mProgress: [ 20%][49m[39m [###################...............................................................................] 8Unpacking unzip (6.0-26ubuntu3.2) ...
+7[29;0f[42m[30mProgress: [ 40%][49m[39m [#######################################...........................................................] 8Setting up unzip (6.0-26ubuntu3.2) ...
+7[29;0f[42m[30mProgress: [ 60%][49m[39m [##########################################################........................................] 87[29;0f[42m[30mProgress: [ 80%][49m[39m [##############################################################################....................] 8Processing triggers for man-db (2.10.2-1) ...
+
+7[0;29r8[1A[JScanning processes... [                                                                                                ]Scanning processes... [=====                                                                                           ]Scanning processes... [===========                                                                                     ]Scanning processes... [================                                                                                ]Scanning processes... [======================                                                                          ]Scanning processes... [============================                                                                    ]Scanning processes... [=================================                                                               ]Scanning processes... [=======================================                                                         ]Scanning processes... [=============================================                                                   ]Scanning processes... [==================================================                                              ]Scanning processes... [========================================================                                        ]Scanning processes... [==============================================================                                  ]Scanning processes... [===================================================================                             ]Scanning processes... [=========================================================================                       ]Scanning processes... [===============================================================================                 ]Scanning processes... [====================================================================================            ]Scanning processes... [==========================================================================================      ]Scanning processes... [================================================================================================]Scanning processes...                                                                                                   
+Scanning processor microcode... [                                                                                      ]Scanning processor microcode... [===========================================                                           ]Scanning processor microcode... [======================================================================================]Scanning processor microcode...                                                                                         
+Scanning linux images... [                                                                                             ]Scanning linux images...                                                                                                
+
+Failed to retrieve available kernel versions.
+
+Failed to check for processor microcode upgrades.
+
+No services need to be restarted.
+
+No containers need to be restarted.
+
+No user sessions are running outdated binaries.
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads[00m$ sudo apt install unzipunzip root-framework-installer-main.zip 
+[?2004lArchive:  root-framework-installer-main.zip
+0150da77a3eb93e554d87ad8202893c0a542a988
+   creating: root-framework-installer-main/
+  inflating: root-framework-installer-main/.all-contributorsrc  
+   creating: root-framework-installer-main/.github/
+   creating: root-framework-installer-main/.github/ISSUE_TEMPLATE/
+  inflating: root-framework-installer-main/.github/ISSUE_TEMPLATE/bug_report.md  
+  inflating: root-framework-installer-main/.github/ISSUE_TEMPLATE/feature_request.md  
+ extracting: root-framework-installer-main/.gitignore  
+  inflating: root-framework-installer-main/CITATION.cff  
+  inflating: root-framework-installer-main/CONTRIBUTING.md  
+  inflating: root-framework-installer-main/License  
+  inflating: root-framework-installer-main/README.md  
+   creating: root-framework-installer-main/img/
+  inflating: root-framework-installer-main/img/distributions.png  
+  inflating: root-framework-installer-main/img/download_repo.png  
+  inflating: root-framework-installer-main/img/installation_example.gif  
+  inflating: root-framework-installer-main/img/latest_release.png  
+  inflating: root-framework-installer-main/img/logo.svg  
+  inflating: root-framework-installer-main/install.sh  
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads[00m$ cd root-framework-installer-main/
+[?2004l[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads/root-framework-installer-main[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads/root-framework-installer-main[00m$ ./install.sh 
+[?2004l
+Installing global prerequisites...
+
+Reading package lists... 0%Reading package lists... 100%Reading package lists... Done
+Building dependency tree... 0%Building dependency tree... 0%Building dependency tree... 50%Building dependency tree... 50%Building dependency tree... Done
+Reading state information... 0% Reading state information... 0%Reading state information... Done
+unzip is already the newest version (6.0-26ubuntu3.2).
+0 upgraded, 0 newly installed, 0 to remove and 238 not upgraded.
+Inserted first argument  is not a zipped file!
+[?2004h]0;prog_linux@MSI: /mnt/c/Users/utente/Downloads/root-framework-installer-main[01;32mprog_linux@MSI[00m:[01;34m/mnt/c/Users/utente/Downloads/root-framework-installer-main[
