@@ -1,11 +1,9 @@
-#include <DataSet.h>
-#include <Bethe_Block.h>
+#include "../HEADERS/DataSet.h"
+#include "../HEADERS/Bethe_Block.h"
 #include <constants.h>
 
 #include <vector>
 #include <map>
-
-
 
 #include "RooRealVar.h"
 #include "RooGaussian.h"
@@ -15,6 +13,20 @@
 
 
 
+inline bool DataSet::Generate(){
+
+    for(int i = 0 ; i < _charges.size(); i++)
+    {
+        for(int j = 0; j < _n_events.size() ; j++ ){ 
+            _charge.push_back(_charges[i]);
+            auto tof = _ToF_Generator(_tof_range[i]);
+            _tof.push_back(tof);
+            _dE.push_back(_dE_Generator(tof,_charges[i]));
+        }
+    }
+
+    retrun true;
+}
 
 
 
@@ -26,9 +38,7 @@
 
 
 
-//---------------------------------------
-
-inline bool DataGenerator::_ToF_Generator(const int N = 1E3/*Numbers of data generated*/){
+inline double DataSet::_ToF_Generator(){
 
 
     RooRealVar tof("t","t",_range.min,_range.max,_unit);
@@ -46,7 +56,7 @@ inline bool DataGenerator::_ToF_Generator(const int N = 1E3/*Numbers of data gen
         throw std::runtime_error("\033[1;31m ERROR: Error in dE generation");
 }
 
-inline bool DataGenerator::_dE_Generator(const RooDataSet* ToF_Data, const double& L){
+inline bool DataSet::_dE_Generator(const RooDataSet* ToF_Data, const double& L){
     
     
     
@@ -67,9 +77,6 @@ inline bool DataGenerator::_dE_Generator(const RooDataSet* ToF_Data, const doubl
         return true;
     else 
         throw std::runtime_error("\033[1;31m ERROR: in dE generation");
-
-   
-
 
 }
 
