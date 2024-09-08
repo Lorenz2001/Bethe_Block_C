@@ -10,7 +10,7 @@
 #include "RooDataSet.h"
 
 
-#include <Bethe_Block.h>
+#include "../HEADERS/Bethe_Block.h"
 
 //Idea: Genero valori di ToF, Calcolo dE e la convulizzo con una gaussianaa
 //
@@ -20,32 +20,62 @@
 
 template <typename T>
 struct Range{
-    bool empty = false;
     T min;
     T max;
+    std::vector<int> neglet = {}; //contains the values that not are considered
 };
+
+
 class DataSet
 {
-    RooDataSet* generated;
+    
 private:
-    RooRealVar _dE;
-    RooRealVar _tof;
+    
+    //SET-UP
     Bethe_Block _BB;
-    std::map<int,Range<double>> _map_charge_tof; //int = carica disponibile, Range = range del tof relativo a quella carica
+    std::vector<int> _charges;
+    std::vector<Range<double>> _tof_range; //int = carica disponibile, Range = range del tof relativo a quella carica
+    std::vector<int> _m_events;
 
+
+
+    //Events generated
+    bool generated; //true if the generation has been performed
+    std::vector<double> _tof;
+    std::vector<double> _dE;
+    std::vector<int> _charge;
 
     bool Generator();
+
+    
+    bool _ToF_Generator(const int N = 1E3/*Numbers of particles generated*/);
+    bool _dE_Generator(const RooDataSet* ToF_Data, const double& L);
+
     
 public:
     DataSet(Range<int> range,const Bethe_Block BB, std::vector<int> N_particles, std::vector<Range<double>> tof_range);
     ~DataSet();
 };
 
-DataSet::DataSet(Range<int> range,const Bethe_Block BB, std::vector<int> N_particles, std::vector<Range<double>> tof_range) : _BB{BB}
+//charge = charge to consider
+//N_particle = how many particles must be generate for i-th charge. If N_particle.size()==1 then the same amount for everyone. If the i-th element is 0, the charge is not considered
+//tof_range = sets the range of the tof for each charge. If size()==1 than the same range is considered for every charge
+DataSet::DataSet(Range<int> charge,const Bethe_Block BB, std::vector<int> N_particles, std::vector<Range<double>> tof_range) : _BB{BB}
 {
+
     for(auto i = range.min; i < range.max;i++)
-        if(tof_range.at(i).empty != true)
-            _map_charge_tof[i] = tof_range.at(i);
+        if(charges.neglet.size()!=0){
+            _charges.push_back(i);
+            _tof_range.push_back(tof_range[i]);
+            _n_events.push_back(N_particles(i));
+        }
+        else
+          if(std::find(charge.neglet.begin(), charge.neglet.end(), i) == charge.neglet.end()){
+                _charges.push_back(i);
+                _tof_range.push_back(tof_range[i]);
+                _n_events.push_back(N_particles(i));
+          }
+        
 
     Generate();
 
@@ -57,49 +87,6 @@ DataSet::~DataSet()
 }
 
 
-
-//? Generator of ToF and dE data for the input particle with charge z
-class DataGenerator
-{
-private:
-
-    //particle
-    int _z;
-
-
-
-    //ToF parameters
-    Range<double> _range;
-    double _mean;
-    double _sigma;
-    const char* _unit;
-
-    //dE parameters
-    double _resolution;
-
-    //BetheBlock
-    Bethe_Block* _BB;
-    
-
-    bool _ToF_Generator(const int N = 1E3/*Numbers of particles generated*/);
-    bool _dE_Generator(const RooDataSet* ToF_Data, const double& L);
-
-
-public:
-    DataGenerator(/* args */);
-    ~DataGenerator();
-};
-
-
-
-
-DataGenerator::DataGenerator(/* args */)
-{
-}
-
-DataGenerator::~DataGenerator()
-{
-}
 
 
 #endif

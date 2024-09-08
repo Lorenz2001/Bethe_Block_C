@@ -6,10 +6,11 @@
         "${workspaceFolder}/**",
         "/home/msi/root/include"
       ],
-      "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
-      "cStandard": "${default}",
-      "cppStandard": "${default}",
-      "intelliSenseMode": "windows-gcc-x64",
+      "defines": [],
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "c17",
+      "cppStandard": "gnu++17",
+      "intelliSenseMode": "linux-gcc-x64",
       "compilerArgs": [
         ""
       ]
