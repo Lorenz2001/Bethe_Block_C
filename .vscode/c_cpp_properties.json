@@ -1,7 +1,7 @@
 {
   "configurations": [
     {
-      "name": "windows-gcc-x64",
+      "name": "linux",
       "includePath": [
         "${workspaceFolder}/**",
         "/home/msi/root/include"

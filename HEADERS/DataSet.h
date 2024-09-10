@@ -33,6 +33,9 @@ private:
     
     //SET-UP
     Bethe_Block _BB;
+    double _t_resolution;
+    double _dE_resolution;
+
     std::vector<int> _charges;
     std::vector<Range<double>> _tof_range; //int = carica disponibile, Range = range del tof relativo a quella carica
     std::vector<int> _m_events;
@@ -48,8 +51,8 @@ private:
     bool Generator();
 
     
-    bool _ToF_Generator(const int N = 1E3/*Numbers of particles generated*/);
-    bool _dE_Generator(const RooDataSet* ToF_Data, const double& L);
+    bool _ToF_Generator(Range<double> tof, double sigma = 1);
+    bool _dE_Generator(double tof, int charge, double sigma = 1);
 
     
 public:
@@ -75,8 +78,6 @@ DataSet::DataSet(Range<int> charge,const Bethe_Block BB, std::vector<int> N_part
                 _tof_range.push_back(tof_range[i]);
                 _n_events.push_back(N_particles(i));
           }
-        
-
     Generate();
 
     
