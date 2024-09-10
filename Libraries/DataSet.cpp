@@ -29,54 +29,36 @@ inline bool DataSet::Generate(){
 }
 
 
+inline double DataSet::_ToF_Generator(Range<double> tof, double sigma = 1){
 
 
+   double average = (tof.min+tof.max)/2;
 
-
-
-
-
-
-
-inline double DataSet::_ToF_Generator(){
-
-
-    RooRealVar tof("t","t",_range.min,_range.max,_unit);
-    RooRealVar mean("mean","mean",_mean,_unit);
-    RooRealVar sigma("sigma","sigma",_sigma,_unit);
-
-    RooGaussian gauss("gauss","gaussian distribution ToF",tof,mean,sigma);
-
-    RooDataSet* data = gauss.generate(tof,N);
+   TRandom3 rand;
+   TRandom3 rand2;
 
      if(/*control condition*/1)
         
-        return true;
+        return rand.Gaus(rand2.Gaus(average, sigma),_t_resolution);
     else 
         throw std::runtime_error("\033[1;31m ERROR: Error in dE generation");
 }
 
-inline bool DataSet::_dE_Generator(const RooDataSet* ToF_Data, const double& L){
+inline bool DataSet::_dE_Generator(double tof, int charge, double sigma = 1){
     
     
     
     
-    RooDataSet* dE_Data;
-    RooRealVar dE;
-    
-    for(int i = 0; i < ToF_Data->numEntries(); i++){
-        TRandom3* rand;
-        const RooArgSet* row = ToF_Data->get(i);
-        double tof = ((RooRealVar*)row->find("t"))->getVal();
-        dE.setVal(rand->Gaus(_BB->dE(_z, tof/(L*c)),_resolution));
-        dE_Data->add(RooArgSet(dE));
-    }
+   double average =_BB.dE(charge,tof);
 
-    if(/*control condition*/1)
+   TRandom3 rand;
+   TRandom3 rand2;
 
-        return true;
+     if(/*control condition*/1)
+        
+        return rand.Gaus(rand2.Gaus(average, sigma),_dE_resolution);
     else 
-        throw std::runtime_error("\033[1;31m ERROR: in dE generation");
+        throw std::runtime_error("\033[1;31m ERROR: Error in dE generation");
 
 }
 

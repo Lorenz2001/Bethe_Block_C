@@ -78,8 +78,6 @@ Bethe_Block::Bethe_Block(bool corrections = true, const Material& material, cons
     _K = _Compute_K();
     Enable_Correction(corrections);
     Set_Material(material,thickness);
-
-    
 }
 
 Bethe_Block::~Bethe_Block()
