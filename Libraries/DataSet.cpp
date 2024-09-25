@@ -98,12 +98,10 @@ const void DataSet::Print_Data(int x_bin, int y_bin){
         Data -> Fill(_tof[i],_dE[i]);
     }
 
-    TCanvas* data_plot = new TCanvas();
+    TCanvas* data_plot = new TCanvas("Data");
     data_plot -> cd();
     Data -> Draw("colz");
-
-
-
+    Data -> SaveAs("Data.jpg");
 
 }
 

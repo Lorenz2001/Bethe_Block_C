@@ -6,6 +6,10 @@
 #include "HEADERS/DataSet.h"
 #include "HEADERS/material.h"
 
+#include "TH1D.h"
+#include "TCanvas.h"
+#include "TRandom.h"
+
 int main(){
 
     Material material;
@@ -29,7 +33,19 @@ int main(){
     DataSet data(charge, BB, N_particles, tof_range);
 
     data.Print_Data(100,200);
+
+    TH1D* test = new TH1D("prova", "prova",100, 3,5);
+    TRandom rand;
+    for(int i = 0; i < 10000; i++)
+        test -> Fill(rand.Gaus(4));
     
+    TCanvas* prova = new TCanvas();
+    prova -> cd();
+    test -> Draw();
+
+
+    int a;
+    std::cin>>a;
 
 
 }

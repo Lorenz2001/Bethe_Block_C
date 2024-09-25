@@ -1,0 +1,24 @@
+{
+//========= Macro generated from object: Data/Data
+//========= by ROOT version6.30/02
+   
+   TH2D *Data__1 = new TH2D("Data__1","Data",100,19.8,22.15,200,-0.2,2.18);
+   Data__1->SetBinContent(10354,81);
+   Data__1->SetEntries(81);
+
+   Int_t ci;      // for color index setting
+   TColor *color; // for color definition with alpha
+   ci = TColor::GetColor("#000099");
+   Data__1->SetLineColor(ci);
+   Data__1->GetXaxis()->SetRange(1,100);
+   Data__1->GetXaxis()->SetLabelFont(42);
+   Data__1->GetXaxis()->SetTitleOffset(1);
+   Data__1->GetXaxis()->SetTitleFont(42);
+   Data__1->GetYaxis()->SetRange(1,200);
+   Data__1->GetYaxis()->SetLabelFont(42);
+   Data__1->GetYaxis()->SetTitleFont(42);
+   Data__1->GetZaxis()->SetLabelFont(42);
+   Data__1->GetZaxis()->SetTitleOffset(1);
+   Data__1->GetZaxis()->SetTitleFont(42);
+   Data__1->Draw("");
+}

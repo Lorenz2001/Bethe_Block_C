@@ -37,11 +37,12 @@ void Bethe_Block::Set_Material(Material material, double thickness){
 //GLOBAL CORRECTION  ENABLES
 bool Bethe_Block::Enable_Correction(bool enable){
     _global_enable_correction = enable;
+    return true;
 }
 
 //FINAL COMPUTATIONS
 double Bethe_Block::dE(double const& z, double const &tof){
-
+    return 0;
 }
 
 double Bethe_Block::z_squared(double dE, double beta)
@@ -59,7 +60,7 @@ double Bethe_Block::z_squared(double dE, double beta)
 
 
     linear = _Linear_z(dE, beta);
-    corrections = (_shell_corr == true)?_Shell_Correction(beta,gamma):0 + (_density_corr == true)?_Density_Effect(beta,gamma):0;
+    corrections = ((_shell_corr == true)?_Shell_Correction(beta,gamma):0) + ((_density_corr == true)?_Density_Effect(beta,gamma):0);
     log = _Log(beta,gamma);
     
     z_squared = linear/(.5*log-beta*beta-corrections);
@@ -75,7 +76,7 @@ double Bethe_Block::z_squared(double dE, double beta)
 
 //Functions
 double Bethe_Block::_Compute_K(){
-
+    return 1;
 }
     //Bethe computations
 
@@ -95,6 +96,7 @@ bool Bethe_Block::_Enable_Correction(CORRECTIONS correction, bool enable){
         _shell_corr = false;
         _density_corr = false;
     }
+    return true;
 }
 
 double Bethe_Block::_Density_Effect(const double& beta, const double& gamma){
@@ -107,13 +109,13 @@ double Bethe_Block::_Shell_Correction(const double& beta, const double& gamma){
 }
 
 double Bethe_Block::_Log(const double& beta, const double& gamma){
-
+    return 1;
 }
 double Bethe_Block::_Linear_z(const double& dE, const double& beta){
-
+  return 1;
 }
 double Bethe_Block::_Linear_dE(const double& z, const double& beta){
-
+    return 1;
 }
 
 double Bethe_Block::_Tmax(const double& M, const double& beta, const double& gamma){
