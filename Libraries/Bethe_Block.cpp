@@ -1,8 +1,23 @@
 #include <iostream>
 #include <cmath>
 
-#include <Bethe_Block.h>
-#include <constants.h>
+#include "../HEADERS/Bethe_Block.h"
+#include "../HEADERS/constants.h"
+
+
+Bethe_Block::Bethe_Block(bool corrections, Material material, double thickness)
+{
+    _K = _Compute_K();
+    Enable_Correction(corrections);
+    Set_Material(material,thickness);
+}
+
+Bethe_Block::~Bethe_Block()
+{
+
+}
+
+
 
 
 //! PUBLIC METHODS
@@ -11,6 +26,13 @@
 void Bethe_Block::Set_Material(int Z, int A, double zeta, double I, double thickness){
 
 }
+void Bethe_Block::Set_Material(Material material, double thickness){
+   _Z = material.Z;
+   _A = material.A;
+   _zeta = material._Zeta;
+   _I = material.I;
+   _thick = thickness;
+}
 
 //GLOBAL CORRECTION  ENABLES
 bool Bethe_Block::Enable_Correction(bool enable){
@@ -18,7 +40,7 @@ bool Bethe_Block::Enable_Correction(bool enable){
 }
 
 //FINAL COMPUTATIONS
-double Bethe_Block::dE_dx(double const& z, double const &tof){
+double Bethe_Block::dE(double const& z, double const &tof){
 
 }
 
