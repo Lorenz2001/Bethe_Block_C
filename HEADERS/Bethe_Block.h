@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-#include <Material.h>
+#include "../HEADERS/material.h"
 
 
 
@@ -54,12 +54,12 @@ private:
     
 
 public:
-    Bethe_Block(bool corrections = true, const Material& material, const double& thickness);
+    Bethe_Block(bool corrections = true, Material material = Material(),  double thickness = 0);
     ~Bethe_Block();
 
     //Settings
     void Set_Material(int Z, int A, double zeta, double I, double thickness);
-    void Set_Material(const Material& material, const double& thickness);
+    void Set_Material(Material material, double thickness);
 
     //GLOBAL CORRECTION ENABLE
     
@@ -73,17 +73,6 @@ public:
 
 };
 
-Bethe_Block::Bethe_Block(bool corrections = true, const Material& material, const double& thickness)
-{
-    _K = _Compute_K();
-    Enable_Correction(corrections);
-    Set_Material(material,thickness);
-}
-
-Bethe_Block::~Bethe_Block()
-{
-
-}
 
 
 #endif
