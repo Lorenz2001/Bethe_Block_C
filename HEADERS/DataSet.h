@@ -1,73 +1,64 @@
 #ifndef DATSET_H
 #define DATSET_H
 
-#include <vector>
-#include <map>
 #include <algorithm>
+#include <map>
+#include <vector>
 
-#include "RooRealVar.h"
-#include "RooGaussian.h"
 #include "RooDataSet.h"
+#include "RooGaussian.h"
+#include "RooRealVar.h"
 
+#include "TRandom3.h"
 
 #include "../HEADERS/Bethe_Block.h"
 
-//Idea: Genero valori di ToF, Calcolo dE e la convulizzo con una gaussianaa
+// Idea: Genero valori di ToF, Calcolo dE e la convulizzo con una gaussianaa
 //
 //
 //
 //
 
-template <typename T>
-struct Range{
-    T min;
-    T max;
-    std::vector<int> neglet = {}; //contains the values that not are considered
+template <typename T> struct Range {
+  T min;
+  T max;
+  std::vector<int> neglet = {}; // contains the values that not are considered
 };
 
+class DataSet {
 
-class DataSet
-{
-    
 private:
-    
-    //SET-UP
-    Bethe_Block _BB;
-    double _t_resolution;
-    double _dE_resolution;
+  // SET-UP
+  Bethe_Block _BB;
+  double _t_resolution;
+  double _dE_resolution;
 
-    std::vector<int> _charges;
-    std::vector<Range<double>> _tof_range; //int = carica disponibile, Range = range del tof relativo a quella carica
-    std::vector<int> _n_events;
+  std::vector<int> _charges;
+  std::vector<Range<double>>
+      _tof_range; // int = carica disponibile, Range = range del tof relativo a
+                  // quella carica
+  std::vector<int> _n_events;
 
+  // Events generated
+  bool generated; // true if the generation has been performed
+  std::vector<double> _tof;
+  std::vector<double> _dE;
+  std::vector<int> _charge;
 
+  bool Generate();
+  void SetResolutions(double t_res, double dE_res);
 
-    //Events generated
-    bool generated; //true if the generation has been performed
-    std::vector<double> _tof;
-    std::vector<double> _dE;
-    std::vector<int> _charge;
+  double _ToF_Generator(Range<double> tof, double sigma, TRandom3& rand);
+  double _dE_Generator(double tof, int charge, double sigma, TRandom3& rand);
 
-    bool Generate();
-
-    
-    double _ToF_Generator(Range<double> tof, double sigma = 1);
-    double _dE_Generator(double tof, int charge, double sigma = 1);
-
-
-    
 public:
-    DataSet(Range<int> range,const Bethe_Block BB, std::vector<int> N_particles, std::vector<Range<double>> tof_range);
-    ~DataSet();
+  DataSet(Range<int> range, const Bethe_Block BB, std::vector<int> N_particles,
+          std::vector<Range<double>> tof_range);
+  ~DataSet();
 
-    const void Print_Data(int x_bin, int y_bin);
-    const void Print_dE();
-    const void Print_tof();
+  const void Print_Data(int x_bin, int y_bin);
+  const void Print_dE();
+  const void Print_tof();
 };
-
-
-
-
-
 
 #endif

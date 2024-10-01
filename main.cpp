@@ -1,52 +1,45 @@
+#include <algorithm>
+#include <chrono>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 #include "HEADERS/Bethe_Block.h"
 #include "HEADERS/DataSet.h"
 #include "HEADERS/material.h"
 
-#include "TH1D.h"
 #include "TCanvas.h"
+#include "TH1D.h"
 #include "TRandom.h"
 
-int main(){
+int main() {
+  
+  auto start = std::chrono::high_resolution_clock::now();
+  Material material;
+  material.A = 100;
+  material.I = 23;
+  material.Z = 50;
+  material._Zeta = 32;
 
-    Material material;
-    material.A = 100;
-    material.I = 23;
-    material.Z = 50;
-    material._Zeta = 32;
+  Bethe_Block BB(false, material, 0.1);
 
-    Bethe_Block BB(false, material, 0.1);
-    
-    //Generation data
-    Range<int> charge;
-    charge.min = 1;
-    charge.max = 10;
-    
-    std::vector<int> N_particles(charge.max,10);
-    for(auto it = N_particles.begin(); it != N_particles.begin()+charge.min; it++)
-        *it = 0;
+  // Generation data
+  Range<int> charge;
+  charge.min = 1;
+  charge.max = 10; //ARRIVA FINO ALLA CARICA 9
 
-    std::vector<Range<double>> tof_range(charge.max,{10,30});
-    DataSet data(charge, BB, N_particles, tof_range);
+  std::vector<int> N_particles;
+  //to remove the charges < charge.min
+  for (int i = 0 ; i < charge.max; i++){
+    N_particles.push_back((i>=charge.min)?1E4:0);
+  } 
 
-    data.Print_Data(100,200);
+  std::vector<Range<double>> tof_range(charge.max, {10, 30});
+  DataSet data(charge, BB, N_particles, tof_range);
 
-    TH1D* test = new TH1D("prova", "prova",100, 3,5);
-    TRandom rand;
-    for(int i = 0; i < 10000; i++)
-        test -> Fill(rand.Gaus(4));
-    
-    TCanvas* prova = new TCanvas();
-    prova -> cd();
-    test -> Draw();
+  data.Print_Data(100,200);
 
-
-    int a;
-    std::cin>>a;
-
-
+  auto end_time = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> duration = end_time - start;
+  std::cout << "\nExecution time total: " << duration.count() << " seconds"
+            << std::endl;
 }
-
