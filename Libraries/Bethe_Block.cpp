@@ -33,16 +33,18 @@ bool Bethe_Block::Enable_Correction(bool enable) {
 }
 
 // FINAL COMPUTATIONS
-double Bethe_Block::dE(double const &z, double const &beta) { 
+double Bethe_Block::dE(double const &z, double const &beta) {
   double dE;
-  
+
   double gamma = 1 / sqrt(1 - beta * beta);
-  double corrections =  ((_shell_corr == true) ? _Shell_Correction(beta, gamma) : 0) +
-                        ((_density_corr == true) ? _Density_Effect(beta, gamma) : 0);
-  
-  dE = _Linear_dE(z,beta)*(.5*_Log(beta,gamma)-beta*beta -corrections);
-  
-  return 0; 
+  double corrections =
+      ((_shell_corr == true) ? _Shell_Correction(beta, gamma) : 0) +
+      ((_density_corr == true) ? _Density_Effect(beta, gamma) : 0);
+
+  dE = _Linear_dE(z, beta) *
+       (.5 * _Log(beta, gamma) - beta * beta - corrections);
+
+  return 0;
 }
 
 double Bethe_Block::z_squared(double dE, double beta) {
@@ -70,7 +72,7 @@ double Bethe_Block::z_squared(double dE, double beta) {
 //! PRIVATE METHODS
 
 // Functions
-double Bethe_Block::_Compute_K() { return 1; }
+double Bethe_Block::_Compute_K() { return 0.307075; } // MeV g^-1 cm^2 }
 // Bethe computations
 
 bool Bethe_Block::_Enable_Correction(CORRECTIONS correction, bool enable) {
@@ -99,21 +101,23 @@ double Bethe_Block::_Shell_Correction(const double &beta, const double &gamma) {
   return 1;
 }
 
-double Bethe_Block::_Log(const double &beta, const double &gamma) { 
-  return 2*m_e*c*c*gamma*gamma*beta*beta*_Tmax(10*m_e,beta,gamma)/(_I*_I); //considero approssimazione M>5m_e 
+double Bethe_Block::_Log(const double &beta, const double &gamma) {
+  return 2 * m_e * c * c * gamma * gamma * beta * beta *
+         _Tmax(10 * m_e, beta, gamma) /
+         (_I * _I); // considero approssimazione M>5m_e
 }
 double Bethe_Block::_Linear_z(const double &dE, const double &beta) {
   double linear;
-  linear = dE*beta*beta; //particle dependence;
-  linear /= (_Z/_A)*_thick; //material dependence
-  linear /= _K; //other constants
+  linear = dE * beta * beta;    // particle dependence;
+  linear /= (_Z / _A) * _thick; // material dependence
+  linear /= _K;                 // other constants
   return linear;
 }
 double Bethe_Block::_Linear_dE(const double &z, const double &beta) {
   double linear;
-  linear = z*z/(beta*beta); //particle dependence;
-  linear *= _Z/_A; //material dependence
-  linear *= _K; //other constants
+  linear = z * z / (beta * beta); // particle dependence;
+  linear *= _Z / _A;              // material dependence
+  linear *= _K;                   // other constants
   return linear;
 }
 
