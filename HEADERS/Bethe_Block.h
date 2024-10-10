@@ -32,13 +32,16 @@ private:
                           bool enable); // valid locally (case by case)
   double _Density_Effect(const double &beta, const double &gamma);
   double _Shell_Correction(const double &beta, const double &gamma);
+
   // Bethe terms
   double _Log(const double &beta, const double &gamma);
-  double _Linear_z(const double &dE, const double &beta); //!TO IMPLEMENT
-  double _Linear_dE(const double &z, const double &beta); //!TO IMPLEMENT
+  double _Linear_z(const double &dE, const double &beta);
+  double _Linear_dE(const double &z, const double &beta);
+
   // Other Functions
 
-  double _Tmax(const double &M, const double &beta, const double &gamma); //!TO MAKE BETTER
+  double _Tmax(const double &M, const double &beta,
+               const double &gamma); //! TO MAKE BETTER
 
 public:
   Bethe_Block(bool corrections = true, Material material = Material(),
@@ -57,5 +60,23 @@ public:
   double dE(const double &z, const double &beta);
   double z_squared(double dE, double beta);
 };
+
+class Bethe_Block_scaled : public Bethe_Block {
+  int scale = 1E4;
+
+private:
+  // Bethe terms
+  double _Log(const double &beta, const double &gamma);
+  double _Linear_z(const double &dE, const double &beta);
+  double _Linear_dE(const double &z, const double &beta);
+
+public:
+  Bethe_Block_scaled(/* args */);
+  ~Bethe_Block_scaled();
+};
+
+Bethe_Block_scaled::Bethe_Block_scaled(/* args */) {}
+
+Bethe_Block_scaled::~Bethe_Block_scaled() {}
 
 #endif

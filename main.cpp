@@ -38,7 +38,7 @@ int main() {
   std::vector<Range<double>> tof_range(charge.max, {10, 30});
   DataSet data(charge, BB, N_particles, tof_range);
 
-  // data.Print_Data(100, 200);
+  data.Print_Data(100, 200);
 
   auto end_time = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> duration = end_time - start;

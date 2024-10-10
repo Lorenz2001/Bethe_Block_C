@@ -1,16 +1,12 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
+struct Material {
+  int Z;
+  double A;
 
-struct Material
-{
-    int Z;
-    int A;
-
-    double I;
-    double _Zeta;
-
+  double I;
+  double _Zeta;
 };
-
 
 #endif
