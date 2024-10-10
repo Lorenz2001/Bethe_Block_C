@@ -48,8 +48,8 @@ private:
   bool Generate();
   void SetResolutions(double t_res, double dE_res);
 
-  double _ToF_Generator(Range<double> tof, double sigma, TRandom3& rand);
-  double _dE_Generator(double tof, int charge, double sigma, TRandom3& rand);
+  double _ToF_Generator(Range<double> tof, double sigma, TRandom3 &rand);
+  double _dE_Generator(double tof, int charge, double sigma, TRandom3 &rand);
 
 public:
   DataSet(Range<int> range, const Bethe_Block BB, std::vector<int> N_particles,
@@ -57,8 +57,12 @@ public:
   ~DataSet();
 
   const void Print_Data(int x_bin, int y_bin);
-  const void Print_dE();
-  const void Print_tof();
+  const void Print_dE() { throw std::logic_error("Metodo non implementato!"); };
+  const void Print_tof() {
+    throw std::logic_error("Metodo non implementato!");
+  };
+
+  const void check_data() {}
 };
 
 #endif
