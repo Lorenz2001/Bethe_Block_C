@@ -27,6 +27,7 @@ DataSet::DataSet(Range<int> charge, const Bethe_Block BB,
       _tof_range.push_back(tof_range[i]);
       _n_events.push_back(N_particles[i]);
     }
+  N_tot = 0;
   Generate();
   SetResolutions(5, 5);
 }
@@ -47,6 +48,9 @@ bool DataSet::Generate() {
       auto tof = _ToF_Generator(_tof_range[i], 5, rand_tof);
       _tof.push_back(tof);
       _dE.push_back(_dE_Generator(tof, _charges[i], 5, rand_tof));
+
+      N_tot++;
+
       // std::cout << i << ": tof: " << _tof[_tof.size() - 1]
       //           << " de: " << *(_dE.end() - 1) << "\n";
     }

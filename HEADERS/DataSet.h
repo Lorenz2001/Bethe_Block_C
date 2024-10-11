@@ -39,6 +39,8 @@ private:
                   // quella carica
   std::vector<int> _n_events;
 
+  int N_tot;
+
   // Events generated
   bool generated; // true if the generation has been performed
   std::vector<double> _tof;
@@ -66,7 +68,7 @@ public:
   const double Return_tof(int i) { return _tof.at(i); };
   const double Return_beta(int i) { return _tof.at(i) / _BB.Return_thick(); };
   const int Return_charge(int i) { return _charge.at(i); };
-  const int Return_N() { return _dE.size(); }
+  const int Return_N() { return N_tot; }
 };
 
 #endif

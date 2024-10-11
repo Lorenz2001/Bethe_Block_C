@@ -40,16 +40,17 @@ int main() {
 
   // data.Print_Data(100, 200);
 
-  for (int i; i < data.Return_N(); i++) {
-    // if (BB.z_squared(data.Return_dE(i), data.Return_beta(i)) -
-    //         Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i)) >
-    //     0.005)
+  for (int i = 0; i < data.Return_N(); i++) {
+    if (BB.z_squared(data.Return_dE(i), data.Return_beta(i)) -
+            Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i)) >
+        0.005)
 
-    std::cout << "\n " << i << ") real: " << data.Return_charge(i)
-              << " z double: "
-              << BB.z_squared(data.Return_dE(i), data.Return_beta(i))
-              << " z int : "
-              << Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i));
+      std::cout << "\n " << i << ") real: " << data.Return_charge(i)
+                << " z double: "
+                << BB.z_squared(data.Return_dE(i), data.Return_beta(i))
+                << " z int : "
+                << Bethe_Block_scaled(BB, data.Return_dE(i),
+                                      data.Return_beta(i));
   }
 
   auto end_time = std::chrono::high_resolution_clock::now();
