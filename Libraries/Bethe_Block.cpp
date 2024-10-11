@@ -6,7 +6,7 @@
 
 Bethe_Block::Bethe_Block(bool corrections, Material material,
                          double thickness) {
-  _K = _Compute_K();
+  _K = Compute_K();
   Enable_Correction(corrections);
   Set_Material(material, thickness);
 }
@@ -72,7 +72,10 @@ double Bethe_Block::z_squared(double dE, double beta) {
 //! PRIVATE METHODS
 
 // Functions
-double Bethe_Block::_Compute_K() { return 0.307075; } // MeV g^-1 cm^2 }
+double Bethe_Block::Compute_K() {
+  return 0.307075; // (MeV·cm²/mol) }
+}
+
 // Bethe computations
 
 bool Bethe_Block::_Enable_Correction(CORRECTIONS correction, bool enable) {
@@ -102,9 +105,9 @@ double Bethe_Block::_Shell_Correction(const double &beta, const double &gamma) {
 }
 
 double Bethe_Block::_Log(const double &beta, const double &gamma) {
-  return 2 * m_e * c * c * gamma * gamma * beta * beta *
-         _Tmax(10 * m_e, beta, gamma) /
-         (_I * _I); // considero approssimazione M>5m_e
+  return std::log(2 * m_e * c * c * gamma * gamma * beta * beta /**
+                  _Tmax(10 * m_e, beta, gamma) */
+                  / (_I * _I)); // considero approssimazione M>5m_e
 }
 double Bethe_Block::_Linear_z(const double &dE, const double &beta) {
   double linear;

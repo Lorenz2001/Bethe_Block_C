@@ -62,7 +62,11 @@ public:
     throw std::logic_error("Metodo non implementato!");
   };
 
-  const void check_data() {}
+  const double Return_dE(int i) { return _dE.at(i); };
+  const double Return_tof(int i) { return _tof.at(i); };
+  const double Return_beta(int i) { return _tof.at(i) / _BB.Return_thick(); };
+  const int Return_charge(int i) { return _charge.at(i); };
+  const int Return_N() { return _dE.size(); }
 };
 
 #endif

@@ -47,8 +47,8 @@ bool DataSet::Generate() {
       auto tof = _ToF_Generator(_tof_range[i], 5, rand_tof);
       _tof.push_back(tof);
       _dE.push_back(_dE_Generator(tof, _charges[i], 5, rand_tof));
-      std::cout << i << ": tof: " << _tof[_tof.size() - 1]
-                << " de: " << *(_dE.end() - 1) << "\n";
+      // std::cout << i << ": tof: " << _tof[_tof.size() - 1]
+      //           << " de: " << *(_dE.end() - 1) << "\n";
     }
   }
 

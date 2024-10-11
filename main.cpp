@@ -18,7 +18,7 @@ int main() {
   auto start = std::chrono::high_resolution_clock::now();
   Material material; // silicon
   material.A = 28.09;
-  material.I = 0.000173; // MeV
+  material.I = 16.0e-6; // Energia media di ionizzazione (in MeV)
   material.Z = 14;
   material._Zeta = 31;
 
@@ -38,10 +38,24 @@ int main() {
   std::vector<Range<double>> tof_range(charge.max, {10, 30});
   DataSet data(charge, BB, N_particles, tof_range);
 
-  data.Print_Data(100, 200);
+  // data.Print_Data(100, 200);
+
+  for (int i; i < data.Return_N(); i++) {
+    // if (BB.z_squared(data.Return_dE(i), data.Return_beta(i)) -
+    //         Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i)) >
+    //     0.005)
+
+    std::cout << "\n " << i << ") real: " << data.Return_charge(i)
+              << " z double: "
+              << BB.z_squared(data.Return_dE(i), data.Return_beta(i))
+              << " z int : "
+              << Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i));
+  }
 
   auto end_time = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> duration = end_time - start;
   std::cout << "\nExecution time total: " << duration.count() << " seconds"
             << std::endl;
+
+  return 0;
 }
