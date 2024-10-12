@@ -5,10 +5,6 @@
 #include <map>
 #include <vector>
 
-#include "RooDataSet.h"
-#include "RooGaussian.h"
-#include "RooRealVar.h"
-
 #include "TRandom3.h"
 
 #include "../HEADERS/Bethe_Block.h"
