@@ -47,13 +47,13 @@ int main() {
   DataSet data(charge, BB, N_particles, tof_range);
 
   // data.Print_Data(100, 200);
-  int N_errors = 0;
+  int N_error = 0;
   for (int i = 0; i < data.Return_N(); i++) {
 
     if (Bethe(BB, data.Return_dE(i), data.Return_beta(i)) -
             Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i)) >
         0.5) {
-      N_errors++;
+      N_error++;
 
       // if (Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i)) ==
       // -2)
@@ -65,7 +65,7 @@ int main() {
                                       data.Return_beta(i));
     }
   }
-  std::cout << "\n ERRORI:" << N_errors;
+  std::cout << "\n ERRORS:" << N_error;
 
   auto end_time = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> duration = end_time - start;
