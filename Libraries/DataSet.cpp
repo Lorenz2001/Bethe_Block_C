@@ -9,7 +9,7 @@
 
 #include "TCanvas.h"
 #include "TH2D.h"
-#include "TRandom3.h"
+#include "TRandom.h"
 
 // charge = charge to consider
 // N_particle = how many particles must be generate for i-th charge. If
@@ -38,7 +38,7 @@ void DataSet::SetResolutions(double t_res, double dE_res) {
   dE_res = dE_res;
 }
 bool DataSet::Generate() {
-  TRandom3 rand_tof;
+  TRandom rand_tof;
 
   for (int i = 0; i < _charges.size(); i++) {
 
@@ -59,9 +59,8 @@ bool DataSet::Generate() {
   return true;
 }
 
-double DataSet::_ToF_Generator(Range<double> tof, double sigma,
-                               TRandom3 &rand) {
-  TRandom3 rand3;
+double DataSet::_ToF_Generator(Range<double> tof, double sigma, TRandom &rand) {
+  TRandom rand3;
   // double average = (tof.min + tof.max) / 2;
   if (/*control condition*/ 1)
 
@@ -71,7 +70,7 @@ double DataSet::_ToF_Generator(Range<double> tof, double sigma,
 }
 
 double DataSet::_dE_Generator(double tof, int charge, double sigma,
-                              TRandom3 &rand) {
+                              TRandom &rand) {
 
   double average = _BB.dE(
       charge, 400 / tof); // 400 it's the distance traveled by the particle
