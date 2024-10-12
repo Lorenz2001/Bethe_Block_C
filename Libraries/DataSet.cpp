@@ -38,21 +38,22 @@ void DataSet::SetResolutions(double t_res, double dE_res) {
   dE_res = dE_res;
 }
 bool DataSet::Generate() {
-  TRandom3 rand_tof;
+  TRandom3 rand;
 
   for (int i = 0; i < _charges.size(); i++) {
 
     for (int j = 0; j < _n_events[i]; j++) {
 
       _charge.push_back(_charges[i]);
-      auto tof = _ToF_Generator(_tof_range[i], 5, rand_tof);
-      _tof.push_back(tof);
-      _dE.push_back(_dE_Generator(tof, _charges[i], 5, rand_tof));
+      auto beta = 150 / (_ToF_Generator(_tof_range[i], 1, rand) *
+                         c); // 150cm is the space traveled by the particle
+      _beta.push_back(beta);
+      _dE.push_back(_dE_Generator(beta, _charges[i], 5, rand));
 
       N_tot++;
 
-      // std::cout << i << ": tof: " << _tof[_tof.size() - 1]
-      //           << " de: " << *(_dE.end() - 1) << "\n";
+      // std::cout << i << ": beta: " << _beta[_beta.size() - 1]
+      //         << " de: " << *(_dE.end() - 1) << "\n";
     }
   }
 
@@ -70,29 +71,30 @@ double DataSet::_ToF_Generator(Range<double> tof, double sigma,
     throw std::runtime_error("\033[1;31m ERROR: Error in dE generation");
 }
 
-double DataSet::_dE_Generator(double tof, int charge, double sigma,
+double DataSet::_dE_Generator(double beta, int charge, double sigma,
                               TRandom3 &rand) {
 
-  double average = _BB.dE(
-      charge, 400 / tof); // 400 it's the distance traveled by the particle
+  double average = _BB.dE(charge, beta);
+
+  double dE = rand.Gaus(rand.Gaus(average, sigma), _dE_resolution);
 
   if (/*control condition*/ 1)
 
-    return rand.Gaus(rand.Gaus(average, sigma), _dE_resolution);
+    return dE;
   else
     throw std::runtime_error("\033[1;31m ERROR: Error in dE generation");
 }
 
 const void DataSet::Print_Data(int x_bin, int y_bin) {
   TH2D *Data = new TH2D("Data", "Data", x_bin,
-                        *std::min_element(_tof.begin(), _tof.end()),
-                        *std::max_element(_tof.begin(), _tof.end()), y_bin,
+                        *std::min_element(_beta.begin(), _beta.end()),
+                        *std::max_element(_beta.begin(), _beta.end()), y_bin,
                         *std::min_element(_dE.begin(), _dE.end()),
                         *std::max_element(_dE.begin(), _dE.end()));
 
-  for (int i = 0; i < _tof.size(); i++) {
-    Data->Fill(_tof[i], _dE[i]);
-    if (i % (_tof.size() / 20) == 0)
+  for (int i = 0; i < _beta.size(); i++) {
+    Data->Fill(_beta[i], _dE[i]);
+    if (i % (_beta.size() / 20) == 0)
       std::cout << ".";
   }
   std::cout << std::endl;

@@ -24,6 +24,7 @@ void Bethe_Block::Set_Material(Material material, double thickness) {
   _zeta = material._Zeta;
   _I = material.I;
   _thick = thickness;
+  _density = material.density;
 }
 
 // GLOBAL CORRECTION  ENABLES
@@ -36,15 +37,21 @@ bool Bethe_Block::Enable_Correction(bool enable) {
 double Bethe_Block::dE(double const &z, double const &beta) {
   double dE;
 
+  if (beta * beta > 1)
+    std::cout << "STOP";
   double gamma = 1 / sqrt(1 - beta * beta);
-  double corrections =
-      ((_shell_corr == true) ? _Shell_Correction(beta, gamma) : 0) +
-      ((_density_corr == true) ? _Density_Effect(beta, gamma) : 0);
+  // double corrections =
+  //     ((_shell_corr == true) ? _Shell_Correction(beta, gamma) : 0) +
+  //     ((_density_corr == true) ? _Density_Effect(beta, gamma) : 0);
+  //
+  // dE = _Linear_dE(z, beta) *
+  //     (.5 * _Log(beta, gamma) - beta * beta - corrections);
 
-  dE = _Linear_dE(z, beta) *
-       (.5 * _Log(beta, gamma) - beta * beta - corrections);
+  dE = -_thick * _K * z * z * _density *
+       (beta * beta - std::log(2 * m_e * beta * beta * gamma * gamma / _I)) /
+       (beta * beta);
 
-  return 0;
+  return dE;
 }
 
 double Bethe_Block::z_squared(double dE, double beta) {

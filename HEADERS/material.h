@@ -7,6 +7,8 @@ struct Material {
 
   double I;
   double _Zeta;
+
+  double density;
 };
 
 #endif

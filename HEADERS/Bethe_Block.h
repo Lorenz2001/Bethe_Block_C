@@ -16,8 +16,9 @@ private:
   // Detector MATERIAL
   int _Z;
   double _A;
-  double _zeta;  // For density effect
-  double _I;     // Minimum atom exitation energy
+  double _zeta; // For density effect
+  double _I;    // Minimum atom exitation energy
+  double _density;
   double _thick; // thickness of the detector
 
   // Corrections enables
@@ -46,7 +47,7 @@ private:
 
 public:
   Bethe_Block(bool corrections = true, Material material = Material(),
-              double thickness = 0);
+              double thickness = 0.5);
   ~Bethe_Block();
 
   // Settings
@@ -56,6 +57,7 @@ public:
   double Compute_K();
   double Return_thick() { return _thick; };
   double Return_I() { return _I; };
+  double Return_density() { return _density; };
 
   // GLOBAL CORRECTION ENABLE
 
@@ -65,16 +67,15 @@ public:
   double dE(const double &z, const double &beta);
   double z_squared(double dE, double beta);
 
-  friend double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta);
+  // friend double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta,
+  //                               int scale);
 };
 
 // namespace scaled {
 //? Funzioni riscalate
-
-int scale = 1E6;
-
+/*
 // Prodotto tra N interi contenuti nell'array factors
-inline int Product_int(int factors[]) {
+inline int Product_int(int factors[], int scale = 1E6) {
   int prod = 1;
 
   int *ptr = factors;
@@ -85,21 +86,88 @@ inline int Product_int(int factors[]) {
 }
 
 // inverso riscalato
-inline int Inverse_int(int arg) { return static_cast<int>((1 / arg) * scale); }
+inline int Inverse_int(int arg, int scale = 1E6) {
+  return static_cast<int>((1 / arg) * scale);
+}*/
 
 // logaritmo riscalato
-inline int Log_int(int arg) {
+inline int Log_scaled(int arg, int scale, int version = 1) {
 
-  int log = std::log(arg) * scale;
+  int log;
 
-  return log;
+  switch (version) {
+  case 0:
+    log = std::log(arg); // * scale;
+    break;
+
+  case 1: {
+    int n = 0;
+    int x = 3;
+    while (x < arg) {
+      x *= 3;
+      n++;
+    }
+    log = n;
+  }; break;
+  default:
+    break;
+  }
+
+  // std ::cout << log << "\n";
+
+  return log * scale;
 }
 
-inline double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta) {
+inline double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta,
+                                 int scale = 4194304) {
 
-  // PARAMETRI SCALATI DA USARE NEI CALCOLI
-  int dE_int = static_cast<int>(dE * scale);
-  int beta_int = static_cast<int>(dE * scale);
+  //? variables with _s in the name are scaled
+
+  // Beta
+  long int beta_s = static_cast<long int>(beta * scale);
+  long int beta_squared_s = static_cast<long int>(beta_s * beta_s / scale);
+
+  // Numeratore
+  long int dE_s = static_cast<long int>(dE * scale);
+  long int num_ss = static_cast<long int>(dE_s * beta_squared_s);
+
+  // Denominatore
+  // constants
+  long int I_s = static_cast<long int>(bb.Return_I() * scale);
+  long int double_me_s = static_cast<long int>(2 * m_e * scale);
+  long int Kx_s = static_cast<long int>(bb.Compute_K() * bb.Return_thick() *
+                                        bb.Return_density() * scale);
+  // Logarithm in denominator
+
+  long int inverse_gamma_squared_s = scale - beta_squared_s; // 1-(beta)^2
+
+  long int arg_1 =
+      static_cast<long int>(I_s * inverse_gamma_squared_s); // log denominator
+  long int arg_2 =
+      static_cast<long int>(beta_squared_s * double_me_s); // log numerator
+
+  if (arg_1 == 0)
+    return -2;
+  double div = arg_2 / arg_1;
+  long int log_div_s = static_cast<long int>(div);
+
+  long int Log_s = Log_scaled(log_div_s, scale);
+  long int parentesis_s = Log_s - beta_squared_s;
+
+  long int den_ss = static_cast<long int>(Kx_s * parentesis_s);
+  // Result
+  if (den_ss == 0) {
+    std::cout << beta << " " << parentesis_s << " " << Log_s << " "
+              << beta_squared_s << "\n";
+    return -1;
+  }
+
+  double div_final = num_ss / den_ss;
+  // std::cout << num_s << " " << den_s << "\n";
+
+  long int result_s = static_cast<long int>(div_final);
+  return div_final;
+  /*
 
   int supp_arr_0[2] = {beta_int, beta_int};
   int beta_squared = Product_int(supp_arr_0);
@@ -126,7 +194,7 @@ inline double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta) {
   int final_product[5] = {energy_loss, Inverse_int(K), beta_squared,
                           Inverse_int(beta_squared - Log_int(log_arg))};
 
-  return Product_int(final_product) / scale; // z_squared
+  return Product_int(final_product) / scale; // z_squared */
 }
 
 //} // namespace scaled

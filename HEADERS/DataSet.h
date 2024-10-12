@@ -39,7 +39,7 @@ private:
 
   // Events generated
   bool generated; // true if the generation has been performed
-  std::vector<double> _tof;
+  std::vector<double> _beta;
   std::vector<double> _dE;
   std::vector<int> _charge;
 
@@ -61,8 +61,8 @@ public:
   };
 
   const double Return_dE(int i) { return _dE.at(i); };
-  const double Return_tof(int i) { return _tof.at(i); };
-  const double Return_beta(int i) { return _tof.at(i) / _BB.Return_thick(); };
+  // const double Return_tof(int i) { return _beta.at(i); };
+  const double Return_beta(int i) { return _beta.at(i); };
   const int Return_charge(int i) { return _charge.at(i); };
   const int Return_N() { return N_tot; }
 };
