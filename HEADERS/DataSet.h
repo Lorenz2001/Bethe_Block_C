@@ -5,7 +5,7 @@
 #include <map>
 #include <vector>
 
-#include "TRandom.h"
+#include "TRandom3.h"
 
 #include "../HEADERS/Bethe_Block.h"
 
@@ -46,8 +46,8 @@ private:
   bool Generate();
   void SetResolutions(double t_res, double dE_res);
 
-  double _ToF_Generator(Range<double> tof, double sigma, TRandom &rand);
-  double _dE_Generator(double tof, int charge, double sigma, TRandom &rand);
+  double _ToF_Generator(Range<double> tof, double sigma, TRandom3 &rand);
+  double _dE_Generator(double tof, int charge, double sigma, TRandom3 &rand);
 
 public:
   DataSet(Range<int> range, const Bethe_Block BB, std::vector<int> N_particles,
