@@ -138,3 +138,80 @@ double Bethe_Block::_Tmax(const double &M, const double &beta,
     T = 2 * m_e * pow(c * beta * gamma, 2);
   return T;
 }
+
+//! SCALED BETHE_BLOCK
+
+// SCALED Logarithm
+int Log_scaled(int arg, int scale, int version) {
+
+  int log;
+
+  switch (version) {
+  case 0:
+    log = std::log(arg); // * scale;
+    break;
+
+  case 1: {
+    int n = 0;
+    int x = 3;
+    while (x < arg) {
+      x *= 3;
+      n++;
+    }
+    log = n;
+  }; break;
+  default:
+    break;
+  }
+
+  return log * scale;
+}
+
+double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta, int scale) {
+
+  //? variables with _s in the name are scaled
+
+  // Beta
+  long int beta_s = static_cast<long int>(beta * scale);
+  long int beta_squared_s = static_cast<long int>(beta_s * beta_s / scale);
+
+  // Numeratore
+  long int dE_s = static_cast<long int>(dE * scale);
+  long int num_ss = static_cast<long int>(dE_s * beta_squared_s);
+
+  // Denominatore
+  // constants
+  long int I_s = static_cast<long int>(bb.Return_I() * scale);
+  long int double_me_s = static_cast<long int>(2 * m_e * scale);
+  long int Kx_s = static_cast<long int>(bb.Compute_K() * bb.Return_thick() *
+                                        bb.Return_density() * scale);
+  // Logarithm in denominator
+
+  long int inverse_gamma_squared_s = scale - beta_squared_s; // 1-(beta)^2
+
+  long int arg_1 =
+      static_cast<long int>(I_s * inverse_gamma_squared_s); // log denominator
+  long int arg_2 =
+      static_cast<long int>(beta_squared_s * double_me_s); // log numerator
+
+  if (arg_1 == 0)
+    return -2;
+  double div = arg_2 / arg_1;
+  long int log_div_s = static_cast<long int>(div);
+
+  long int Log_s = Log_scaled(log_div_s, scale);
+  long int parentesis_s = Log_s - beta_squared_s;
+
+  long int den_ss = static_cast<long int>(Kx_s * parentesis_s);
+  // Result
+  if (den_ss == 0) {
+    std::cout << beta << " " << parentesis_s << " " << Log_s << " "
+              << beta_squared_s << "\n";
+    return -1;
+  }
+
+  double div_final = num_ss / den_ss;
+
+  long int result_s = static_cast<long int>(div_final);
+  return div_final;
+}

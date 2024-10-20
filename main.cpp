@@ -8,7 +8,7 @@
 #include "HEADERS/material.h"
 
 #include "TCanvas.h"
-#include "TH1D.h"
+#include "TH2D.h"
 #include "TRandom.h"
 
 // TODO: considerare la teoria di LANDAU e quindi la modifica col T_cut
@@ -25,17 +25,17 @@ int main() {
   auto start = std::chrono::high_resolution_clock::now();
   Material material; // silicon
   material.A = 28.09;
-  material.I = 16.0e-6; // Energia media di ionizzazione (in MeV)
+  material.I = 16.0e-6; // Ionization energy (in MeV)
   material.Z = 14;
   material._Zeta = 31;     // Not real
   material.density = 2.32; // g/cm^3
 
   Bethe_Block BB(false, material, 0.1); // 0.1 = thickness in cm
 
-  // Generation data
+  // Generation of data
   Range<int> charge;
   charge.min = 1;
-  charge.max = 10; // ARRIVA FINO ALLA CARICA 9
+  charge.max = 10; // I
 
   std::vector<int> N_particles;
   // to remove the charges < charge.min
@@ -48,15 +48,14 @@ int main() {
 
   // data.Print_Data(100, 200);
   int N_error = 0;
+
   for (int i = 0; i < data.Return_N(); i++) {
 
     if (Bethe(BB, data.Return_dE(i), data.Return_beta(i)) -
             Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i)) >
-        0.5) {
+        1) {
       N_error++;
 
-      // if (Bethe_Block_scaled(BB, data.Return_dE(i), data.Return_beta(i)) ==
-      // -2)
       std::cout << "\n " << i << ") "
                 << "real: " << data.Return_charge(i) << " z double: "
                 << Bethe(BB, data.Return_dE(i), data.Return_beta(i)) << " "
@@ -65,7 +64,8 @@ int main() {
                                       data.Return_beta(i));
     }
   }
-  std::cout << "\n ERRORS:" << N_error;
+  std::cout << "\n Number of charge wrongly reconstructed (Delta(charge)>1):"
+            << N_error;
 
   auto end_time = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> duration = end_time - start;
