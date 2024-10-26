@@ -2,6 +2,7 @@
 #define BETHE_BLOCK_H
 
 #include <cmath>
+#include <fstream>
 #include <iostream>
 
 #include "../HEADERS/constants.h"
@@ -74,9 +75,13 @@ public:
 //! SCALED BETHE BLOCK
 
 // SCALED Logarithm
-int Log_scaled(int arg, int scale, int version = 1);
+unsigned long long int Log_scaled(unsigned long long int arg,
+                                  unsigned long long intscale, int version = 1);
 
-double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta,
-                          int scale = 4194304);
+long int Bethe_Block_scaled(Bethe_Block bb, double dE, double beta,
+                            int scale = 4194304);
+unsigned long long int Bethe_Block_scaled_file(
+    std::string file_name, Bethe_Block bb, double dE, double beta,
+    unsigned long long int scale = 4294967296); //); // 4294967296);
 
 #endif

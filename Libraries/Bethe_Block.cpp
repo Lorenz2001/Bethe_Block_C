@@ -142,37 +142,49 @@ double Bethe_Block::_Tmax(const double &M, const double &beta,
 //! SCALED BETHE_BLOCK
 
 // SCALED Logarithm
-int Log_scaled(int arg, int scale, int version) {
+unsigned long long int Log_scaled(unsigned long long int arg,
+                                  unsigned long long int scale, int version) {
 
-  int log;
-
+  unsigned long long int log;
+  unsigned long long int ln_two =
+      static_cast<unsigned long long int>(0.6931471805599 * scale);
+  std::cout << " log  " << ln_two << " ";
   switch (version) {
+
   case 0:
-    log = std::log(arg); // * scale;
+    log = static_cast<unsigned long long int>(std::log(arg) * scale);
+    //  std::cout << arg << " " << static_cast<long int>(std::log(arg))
+    //            << std::endl;
     break;
 
   case 1: {
-    int n = 0;
-    int x = 3;
+    // arg *= std::pow(2, 4);
+    unsigned long long int n = 0;
+    unsigned long long int x = 2;
     while (x < arg) {
-      x *= 3;
+      x = static_cast<unsigned long long int>(2 * x);
       n++;
     }
-    log = n;
+    n *= scale;
+    n -= 32; // log_2(scale)=# of bits, to have ln(arg)=log_2(arg X
+             // scale)=(log_2(arg x scale)-log_2(scale))x ln(2)
+    std::cout << "  " << arg / scale << " ";
+    log = static_cast<unsigned long long int>((n * ln_two));
   }; break;
   default:
     break;
   }
 
-  return log * scale;
+  return log;
 }
 
-double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta, int scale) {
+long int Bethe_Block_scaled(Bethe_Block bb, double dE, double beta, int scale) {
 
   //? variables with _s in the name are scaled
 
   // Beta
   long int beta_s = static_cast<long int>(beta * scale);
+
   long int beta_squared_s = static_cast<long int>(beta_s * beta_s / scale);
 
   // Numeratore
@@ -213,5 +225,122 @@ double Bethe_Block_scaled(Bethe_Block bb, double dE, double beta, int scale) {
   double div_final = num_ss / den_ss;
 
   long int result_s = static_cast<long int>(div_final);
+
+  // Stampa finale
+  // std::cout << "Results: "
+  //           << "beta_s: " << beta_s << "\n "
+  //           << "beta_squared_s: " << beta_squared_s << "\n "
+  //           << "dE_s: " << dE_s << "\n "
+  //           << "num_ss: " << num_ss << "\n "
+  //           << "I_s: " << I_s << "\n "
+  //           << "double_me_s: " << double_me_s << "\n "
+  //           << "Kx_s: " << Kx_s << "\n "
+  //           << "inverse_gamma_squared_s: " << inverse_gamma_squared_s <<
+  //           "\n
+  //           "
+  //           << "arg_1: " << arg_1 << "\n "
+  //           << "arg_2: " << arg_2 << "\n "
+  //           << "log_div_s: " << log_div_s << "\n "
+  //           << "Log_s: " << Log_s << "\n "
+  //           << "parentesis_s: " << parentesis_s << "\n "
+  //           << "den_ss: " << den_ss << "\n "
+  //           << "div_final: " << div_final << "\n "
+  //           << "result_s: " << result_s << std::endl
+  //           << std::endl;
+  //
+  return div_final;
+}
+
+unsigned long long int Bethe_Block_scaled_file(std::string file_name,
+                                               Bethe_Block bb, double dE,
+                                               double beta,
+                                               unsigned long long int scale) {
+
+  //? variables with _s in the name are scaled
+
+  // Beta
+  unsigned long long int beta_s =
+      static_cast<unsigned long long int>(beta * scale);
+  unsigned long long int beta_squared_s =
+      static_cast<unsigned long long int>((beta_s * beta_s) / scale);
+  // std::cout << " " << beta_squared_s << " ";
+
+  // Numeratore
+  unsigned long long int dE_s = static_cast<unsigned long long int>(dE * scale);
+  unsigned long long int num_s =
+      static_cast<unsigned long long int>(dE * beta_squared_s);
+
+  // Denominatore
+  // constants
+  unsigned long long int I_s =
+      static_cast<unsigned long long int>(bb.Return_I() * scale);
+  unsigned long long int double_me_s =
+      static_cast<unsigned long long int>(2 * m_e * scale);
+  unsigned long long int Kx_s = static_cast<unsigned long long int>(
+      bb.Compute_K() * bb.Return_thick() * bb.Return_density() * scale);
+  // Logarithm in denominator
+
+  unsigned long long int inverse_gamma_squared_s =
+      I_s * scale - I_s * beta_squared_s; // 1-(beta)^2
+
+  unsigned long long int arg_1 = static_cast<unsigned long long int>(
+      inverse_gamma_squared_s / scale); // log denominator
+  unsigned long long int arg_2 = static_cast<unsigned long long int>(
+      beta_squared_s * double_me_s / scale); // log numerator
+
+  if (arg_1 == 0)
+    return -2;
+
+  unsigned long long int Log_1_s = Log_scaled(arg_1, scale, 1);
+  unsigned long long int Log_2_s = Log_scaled(arg_2, scale, 1);
+  unsigned long long int parentesis_s = Log_2_s - Log_1_s - beta_squared_s;
+  std::cout << " int " << Log_2_s << " " << Log_1_s << " " << beta_squared_s
+            << " "
+            << " " << Log_2_s - Log_1_s - beta_squared_s << " ";
+  unsigned long long int den_ss =
+      static_cast<unsigned long long int>(Kx_s * parentesis_s);
+  std::cout << Kx_s * parentesis_s / scale << " " << num_s << " " << std::endl;
+  //  Result
+  if (den_ss == 0) {
+    std::cout << beta << " " << parentesis_s << " " //<< Log_s << " "
+              << beta_squared_s << "\n";
+    return -1;
+  }
+
+  double div_final = (num_s) / (den_ss / scale);
+
+  unsigned long long int result_s =
+      static_cast<unsigned long long int>(div_final);
+
+  // Stampa finale
+  // std::cout << "Results: "
+  //           << "beta_s: " << beta_s << "\n "
+  //           << "beta_squared_s: " << beta_squared_s << "\n "
+  //           << "dE_s: " << dE_s << "\n "
+  //           << "num_ss: " << num_ss << "\n "
+  //           << "I_s: " << I_s << "\n "
+  //           << "double_me_s: " << double_me_s << "\n "
+  //           << "Kx_s: " << Kx_s << "\n "
+  //           << "inverse_gamma_squared_s: " << inverse_gamma_squared_s <<
+  //           "\n
+  //           "
+  //           << "arg_1: " << arg_1 << "\n "
+  //           << "arg_2: " << arg_2 << "\n "
+  //           << "log_div_s: " << log_div_s << "\n "
+  //           << "Log_s: " << Log_s << "\n "
+  //           << "parentesis_s: " << parentesis_s << "\n "
+  //           << "den_ss: " << den_ss << "\n "
+  //           << "div_final: " << div_final << "\n "
+  //           << "result_s: " << result_s << std::endl
+  //           << std::endl;
+  //
+  std::ofstream out(file_name, std::ios::app);
+  // Stampa  su file
+
+  out << beta_s << " " << beta_squared_s << " " << dE_s << " "
+      << " " << arg_1 << " " << arg_2 << " " //<< Log_s << " "
+      << "parentesis_s: " << parentesis_s << " " << std::endl;
+
+  out.close();
   return div_final;
 }
