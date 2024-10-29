@@ -1,5 +1,6 @@
 #include <cmath>
 #include <iostream>
+#include <vector>
 
 #include "../HEADERS/Bethe_Block.h"
 #include "../HEADERS/constants.h"
@@ -145,32 +146,115 @@ double Bethe_Block::_Tmax(const double &M, const double &beta,
 unsigned long long int Log_scaled(unsigned long long int arg,
                                   unsigned long long int scale, int version) {
 
+  double xx = static_cast<long double>(arg) / static_cast<long double>(scale);
+
   unsigned long long int log;
   unsigned long long int ln_two =
       static_cast<unsigned long long int>(0.6931471805599 * scale);
-  std::cout << " log  " << ln_two << " ";
+
   switch (version) {
 
   case 0:
     log = static_cast<unsigned long long int>(std::log(arg) * scale);
-    //  std::cout << arg << " " << static_cast<long int>(std::log(arg))
-    //            << std::endl;
+
     break;
 
   case 1: {
-    // arg *= std::pow(2, 4);
-    unsigned long long int n = 0;
-    unsigned long long int x = 2;
-    while (x < arg) {
+    unsigned long long int n = static_cast<unsigned long long int>(0);
+    unsigned long long int x = static_cast<unsigned long long int>(2);
+    while (x < xx) {
       x = static_cast<unsigned long long int>(2 * x);
-      n++;
+      n = static_cast<unsigned long long int>(n + 1);
     }
-    n *= scale;
-    n -= 32; // log_2(scale)=# of bits, to have ln(arg)=log_2(arg X
-             // scale)=(log_2(arg x scale)-log_2(scale))x ln(2)
-    std::cout << "  " << arg / scale << " ";
+    // n *= scale;
+    n = static_cast<unsigned long long int>(
+        n - 32); // log_2(scale)=# of bits, to have ln(arg)=log_2(arg X
+                 // scale)=(log_2(arg x scale)-log_2(scale))x ln(2)
+
     log = static_cast<unsigned long long int>((n * ln_two));
   }; break;
+
+  case 2: {
+    double aa = 6 * (xx - 1) / (xx + 4 * std::sqrt(xx) + 1);
+    std::cout << " a " << xx << " " << aa + 22 << " a ";
+    log = static_cast<unsigned long long int>((aa + 22) * scale);
+
+  } break;
+
+  case 3: {
+
+    double x = xx;
+    int iterations = 15;
+    // Fattore di scala K (approssimato)
+    double K = 1;
+    for (int i = 0; i < iterations; i++)
+      K *= 1 /
+           std::sqrt(
+               1 +
+               1 / std::pow(2,
+                            2 * i)); // K = prodotto di (1/sqrt(1 + (2^(-i))^2))
+
+    // Inizializzazione
+    double z = 0;         // Angolo residuo
+    double x_current = x; // Valore di input
+    double y_current = 0; // Coordinata y iniziale
+    double z_current = 0; // Angolo corrente (inizialmente 0)
+
+    // Tabella degli angoli theta
+    std::vector<double> theta(iterations);
+    for (int i = 0; i < iterations; i++) {
+      theta[i] = std::atan(pow(2, -i));
+    }
+
+    // Iterazioni
+    for (int i = 0; i < iterations; i++) {
+      // Decidi la direzione della rotazione
+      int d = (z_current < 0) ? 1 : -1;
+
+      // Aggiorna le coordinate
+      double x_next = x_current - d * y_current * std::pow(2, -i);
+      double y_next = y_current + d * x_current * std::pow(2, -i);
+
+      // Aggiorna l'angolo residuo
+      z_current -= d * theta[i];
+
+      // Aggiorna le coordinate correnti
+      x_current = x_next;
+      y_current = y_next;
+    }
+
+    // Calcola il logaritmo finale
+    long double log_value =
+        z_current * scale + iterations * ln_two; // Aggiungi ln(2^N)
+
+    return static_cast<unsigned long long int>(
+        log_value / K); // Dividi per il fattore di scala K
+  } break;
+  case 4: {
+
+    xx /= std::pow(2, 4);
+    double aa = 6 * (xx - 1) / (xx + 4 * std::sqrt(xx) + 1);
+    std::cout << " a " << xx << " " << aa + 22 << " a ";
+    log = static_cast<unsigned long long int>((aa + 18) * scale);
+  } break;
+
+  case 5: {
+    if (arg <= 0)
+      throw("ERROR; arg<=0");
+    else {
+      long double arg_d = static_cast<long double>(arg);
+      int a = 0;
+      while (arg_d >= 1) {
+        arg_d /= 2;
+        a++;
+      }
+
+      double log_res = 2 * std::atan((arg - 1) / (arg + 1));
+      log = static_cast<unsigned long long int>((log_res + (a + 21) * ln_two) *
+                                                scale);
+    }
+  }
+
   default:
     break;
   }
@@ -291,10 +375,14 @@ unsigned long long int Bethe_Block_scaled_file(std::string file_name,
   if (arg_1 == 0)
     return -2;
 
-  unsigned long long int Log_1_s = Log_scaled(arg_1, scale, 1);
-  unsigned long long int Log_2_s = Log_scaled(arg_2, scale, 1);
+  unsigned long long int Log_1_s = Log_scaled(arg_1, scale, 5);
+  unsigned long long int Log_2_s = Log_scaled(arg_2, scale, 5);
+
+  unsigned long long int arg_tot =
+      static_cast<unsigned long long int>((arg_2 / arg_1) * scale);
+  unsigned long long int Log_total = Log_scaled(arg_tot, scale, 5);
   unsigned long long int parentesis_s = Log_2_s - Log_1_s - beta_squared_s;
-  std::cout << " int " << Log_2_s << " " << Log_1_s << " " << beta_squared_s
+  std::cout << " int " << arg_tot << " " << Log_1_s << " " << beta_squared_s
             << " "
             << " " << Log_2_s - Log_1_s - beta_squared_s << " ";
   unsigned long long int den_ss =

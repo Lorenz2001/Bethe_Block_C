@@ -15,9 +15,7 @@
 
 double Bethe(Bethe_Block bb, double dE, double beta) {
   unsigned long long int scale = 4294967296;
-  std::cout << "double "
-            << static_cast<unsigned long long int>(
-                   std::log(2 * m_e * beta * beta * scale) * scale)
+  std::cout << "double " << std::log(2 * m_e * beta * beta * scale) * scale
             << " "
             << std::log(bb.Return_I() * (1 - beta * beta) * scale) * scale
             << " "
