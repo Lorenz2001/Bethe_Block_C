@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="TB_Logarithm_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="TB_Logarithm" />
+            <top_module name="material_package" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="196.801 ns"></ZoomEndTime>
+      <Cursor1Time time="67.824 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="223"></NameColumnWidth>
+      <ValueColumnWidth column_width="69"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wvobject fp_name="/TB_Logarithm/UUT/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/enable" type="logic">
+      <obj_property name="ElementShortName">enable</obj_property>
+      <obj_property name="ObjectShortName">enable</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/beta_sqrt" type="array">
+      <obj_property name="ElementShortName">beta_sqrt[31:0]</obj_property>
+      <obj_property name="ObjectShortName">beta_sqrt[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">32</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/enable_ion_mult" type="logic">
+      <obj_property name="ElementShortName">enable_ion_mult</obj_property>
+      <obj_property name="ObjectShortName">enable_ion_mult</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/I_times_beta_sqrt" type="array">
+      <obj_property name="ElementShortName">I_times_beta_sqrt[63:0]</obj_property>
+      <obj_property name="ObjectShortName">I_times_beta_sqrt[63:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">62</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/enable_num_mult" type="logic">
+      <obj_property name="ElementShortName">enable_num_mult</obj_property>
+      <obj_property name="ObjectShortName">enable_num_mult</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/double_me_times_beta_sqrt" type="array">
+      <obj_property name="ElementShortName">double_me_times_beta_sqrt[63:0]</obj_property>
+      <obj_property name="ObjectShortName">double_me_times_beta_sqrt[63:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">62</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/dividend_valid" type="logic">
+      <obj_property name="ElementShortName">dividend_valid</obj_property>
+      <obj_property name="ObjectShortName">dividend_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/num" type="array">
+      <obj_property name="ElementShortName">num[31:0]</obj_property>
+      <obj_property name="ObjectShortName">num[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">31</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/divisor_valid" type="logic">
+      <obj_property name="ElementShortName">divisor_valid</obj_property>
+      <obj_property name="ObjectShortName">divisor_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/den" type="array">
+      <obj_property name="ElementShortName">den[31:0]</obj_property>
+      <obj_property name="ObjectShortName">den[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">31</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/div_valid" type="logic">
+      <obj_property name="ElementShortName">div_valid</obj_property>
+      <obj_property name="ObjectShortName">div_valid</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/result_division" type="array">
+      <obj_property name="ElementShortName">result_division[39:0]</obj_property>
+      <obj_property name="ObjectShortName">result_division[39:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">2</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/enable_shift" type="logic">
+      <obj_property name="ElementShortName">enable_shift</obj_property>
+      <obj_property name="ObjectShortName">enable_shift</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/shift_word" type="array">
+      <obj_property name="ElementShortName">shift_word[31:0]</obj_property>
+      <obj_property name="ObjectShortName">shift_word[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">13</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/log_arg" type="array">
+      <obj_property name="ElementShortName">log_arg[31:0]</obj_property>
+      <obj_property name="ObjectShortName">log_arg[31:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">32</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/valid_shift" type="logic">
+      <obj_property name="ElementShortName">valid_shift</obj_property>
+      <obj_property name="ObjectShortName">valid_shift</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/enable_log" type="logic">
+      <obj_property name="ElementShortName">enable_log</obj_property>
+      <obj_property name="ObjectShortName">enable_log</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/valid_log" type="logic">
+      <obj_property name="ElementShortName">valid_log</obj_property>
+      <obj_property name="ObjectShortName">valid_log</obj_property>
+   </wvobject>
+   <wvobject fp_name="/TB_Logarithm/UUT/log_res" type="array">
+      <obj_property name="ElementShortName">log_res[32:0]</obj_property>
+      <obj_property name="ObjectShortName">log_res[32:0]</obj_property>
+      <obj_property name="Radix">REALRADIX</obj_property>
+      <obj_property name="radix_realType">UNSIGNEDFIXEDPOINTRADIX</obj_property>
+      <obj_property name="radix_fractionWidth">30</obj_property>
+      <obj_property name="radix_otherWidth">0</obj_property>
+   </wvobject>
+</wave_config>

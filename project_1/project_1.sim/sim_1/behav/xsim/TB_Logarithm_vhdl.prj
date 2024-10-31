@@ -1,0 +1,27 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../project_1.gen/sources_1/ip/mult_gen_2/sim/mult_gen_2.vhd" \
+"../../../../project_1.gen/sources_1/ip/cordic_0/demo_tb/tb_cordic_0.vhd" \
+"../../../../project_1.gen/sources_1/ip/cordic_0/sim/cordic_0.vhd" \
+"../../../../project_1.gen/sources_1/ip/div_gen_0/demo_tb/tb_div_gen_0.vhd" \
+"../../../../project_1.gen/sources_1/ip/div_gen_0/sim/div_gen_0.vhd" \
+"../../../../project_1.gen/sources_1/ip/div_gen_1/demo_tb/tb_div_gen_1.vhd" \
+"../../../../project_1.gen/sources_1/ip/div_gen_1/sim/div_gen_1.vhd" \
+"../../../../project_1.gen/sources_1/ip/c_addsub_0/sim/c_addsub_0.vhd" \
+"../../../../project_1.srcs/sources_1/new/Material_Package.vhd" \
+"../../../../project_1.srcs/sources_1/new/Log.vhd" \
+"../../../../project_1.srcs/sources_1/new/Package.vhd" \
+"../../../../project_1.srcs/sources_1/new/Power.vhd" \
+"../../../../project_1.srcs/sources_1/new/Logarithm.vhd" \
+"../../../../project_1.srcs/sources_1/new/Shifter_word.vhd" \
+"../../../../project_1.srcs/sim_1/new/TB_multiplier.vhd" \
+"../../../../project_1.srcs/sim_1/new/TB_Ripple_carry.vhd" \
+"../../../../project_1.srcs/sim_1/new/TB_FA.vhd" \
+"../../../../project_1.srcs/sim_1/new/TB_Mult_gen_0.vhd" \
+"../../../../project_1.srcs/sim_1/new/TB_Denominator.vhd" \
+"../../../../project_1.srcs/sim_1/new/TB_Division.vhd" \
+"../../../../project_1.srcs/sim_1/new/TB_log.vhd" \
+"../../../../project_1.srcs/sim_1/new/TB_Logarithm.vhd" \
+
+# Do not sort compile order
+nosort
