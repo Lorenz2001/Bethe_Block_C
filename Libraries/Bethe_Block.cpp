@@ -50,7 +50,7 @@ double Bethe_Block::dE(double const &z, double const &beta) {
 
   dE = -_thick * _K * z * z * _density *
        (beta * beta - std::log(2 * m_e * beta * beta * gamma * gamma / _I)) /
-       (beta * beta);
+       (beta * beta); // ABS of dE
 
   return dE;
 }
@@ -244,7 +244,7 @@ unsigned long long int Log_scaled(unsigned long long int arg,
     else {
       long double arg_d = static_cast<long double>(arg);
       int a = 0;
-      while (arg_d >= 1) {
+      while ((arg_d + 1) >= 1) {
         arg_d /= 2;
         a++;
       }
@@ -257,6 +257,32 @@ unsigned long long int Log_scaled(unsigned long long int arg,
 
   default:
     break;
+  }
+
+  return log;
+}
+
+unsigned long long int Log_scaled_CORDIC(double arg,
+                                         unsigned long long int scale) {
+
+  unsigned long long int log;
+  unsigned long long int ln_two =
+      static_cast<unsigned long long int>(0.6931471805599 * scale);
+
+  if (arg <= 0)
+    throw("ERROR; arg<=0");
+  else {
+    double arg_d = std::trunc(arg);
+    int a = 0;
+    while ((arg_d) >= 1) {
+      arg_d /= 2.;
+      a++;
+    }
+
+    double log_res = 2 * std::atan((arg_d - 1) / (arg_d + 1));
+    if (arg_d < 0.5)
+      std::cout << " " << arg_d << " " << std::endl;
+    log = static_cast<unsigned long long int>(log_res * scale + a * ln_two);
   }
 
   return log;
@@ -365,7 +391,7 @@ unsigned long long int Bethe_Block_scaled_file(std::string file_name,
   // Logarithm in denominator
 
   unsigned long long int inverse_gamma_squared_s =
-      I_s * scale - I_s * beta_squared_s; // 1-(beta)^2
+      I_s * scale - I_s * beta_squared_s; // I*(1-(beta)^2)
 
   unsigned long long int arg_1 = static_cast<unsigned long long int>(
       inverse_gamma_squared_s / scale); // log denominator
@@ -375,20 +401,21 @@ unsigned long long int Bethe_Block_scaled_file(std::string file_name,
   if (arg_1 == 0)
     return -2;
 
-  unsigned long long int Log_1_s = Log_scaled(arg_1, scale, 5);
-  unsigned long long int Log_2_s = Log_scaled(arg_2, scale, 5);
+  unsigned long long int Log_1_s = Log_scaled(arg_1, scale, 0);
+  unsigned long long int Log_2_s = Log_scaled(arg_2, scale, 0);
 
-  unsigned long long int arg_tot =
-      static_cast<unsigned long long int>((arg_2 / arg_1) * scale);
-  unsigned long long int Log_total = Log_scaled(arg_tot, scale, 5);
-  unsigned long long int parentesis_s = Log_2_s - Log_1_s - beta_squared_s;
-  std::cout << " int " << arg_tot << " " << Log_1_s << " " << beta_squared_s
-            << " "
-            << " " << Log_2_s - Log_1_s - beta_squared_s << " ";
+  double arg_tot = static_cast<long double>(static_cast<long double>(arg_2) /
+                                            static_cast<long double>(arg_1));
+  unsigned long long int Log_total = Log_scaled_CORDIC(arg_tot, scale);
+  unsigned long long int parentesis_s = Log_total - beta_squared_s;
+  std::cout << " int " << beta_squared_s << " " << arg_2 << " " << arg_1
+            << "    "
+            << " " << arg_tot << " " << Log_total << std::endl;
   unsigned long long int den_ss =
       static_cast<unsigned long long int>(Kx_s * parentesis_s);
-  std::cout << Kx_s * parentesis_s / scale << " " << num_s << " " << std::endl;
-  //  Result
+  // std::cout << Kx_s * parentesis_s / scale << " " << num_s << " " <<
+  // std::endl;
+  //    Result
   if (den_ss == 0) {
     std::cout << beta << " " << parentesis_s << " " //<< Log_s << " "
               << beta_squared_s << "\n";
@@ -400,34 +427,13 @@ unsigned long long int Bethe_Block_scaled_file(std::string file_name,
   unsigned long long int result_s =
       static_cast<unsigned long long int>(div_final);
 
-  // Stampa finale
-  // std::cout << "Results: "
-  //           << "beta_s: " << beta_s << "\n "
-  //           << "beta_squared_s: " << beta_squared_s << "\n "
-  //           << "dE_s: " << dE_s << "\n "
-  //           << "num_ss: " << num_ss << "\n "
-  //           << "I_s: " << I_s << "\n "
-  //           << "double_me_s: " << double_me_s << "\n "
-  //           << "Kx_s: " << Kx_s << "\n "
-  //           << "inverse_gamma_squared_s: " << inverse_gamma_squared_s <<
-  //           "\n
-  //           "
-  //           << "arg_1: " << arg_1 << "\n "
-  //           << "arg_2: " << arg_2 << "\n "
-  //           << "log_div_s: " << log_div_s << "\n "
-  //           << "Log_s: " << Log_s << "\n "
-  //           << "parentesis_s: " << parentesis_s << "\n "
-  //           << "den_ss: " << den_ss << "\n "
-  //           << "div_final: " << div_final << "\n "
-  //           << "result_s: " << result_s << std::endl
-  //           << std::endl;
-  //
   std::ofstream out(file_name, std::ios::app);
   // Stampa  su file
 
-  out << beta_s << " " << beta_squared_s << " " << dE_s << " "
-      << " " << arg_1 << " " << arg_2 << " " //<< Log_s << " "
-      << "parentesis_s: " << parentesis_s << " " << std::endl;
+  out << static_cast<int>(beta * scale) << static_cast<int>(dE * scale);
+  //<< beta_s << " " << beta_squared_s << " " << dE_s << " "
+  //<< " " << arg_1 << " " << arg_2 << " " //<< Log_s << " "
+  //<< "parentesis_s: " << parentesis_s << " " << std::endl;
 
   out.close();
   return div_final;

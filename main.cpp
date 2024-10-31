@@ -15,17 +15,17 @@
 
 double Bethe(Bethe_Block bb, double dE, double beta) {
   unsigned long long int scale = 4294967296;
-  std::cout << "double " << std::log(2 * m_e * beta * beta * scale) * scale
-            << " "
-            << std::log(bb.Return_I() * (1 - beta * beta) * scale) * scale
-            << " "
-            << static_cast<unsigned long long int>(
-                   bb.Return_thick() * bb.Compute_K() * bb.Return_density() *
-                   (std::log(2 * m_e * beta * beta * scale) * scale -
-                    std::log(bb.Return_I() * (1 - beta * beta) * scale) *
-                        scale -
-                    beta * beta * scale))
-            << " " << (dE * scale) * beta * beta; //* 4294967296;
+  // std::cout << "double " << beta * beta * scale << " "
+  //           << 2 * m_e * beta * beta * scale /
+  //                  ((bb.Return_I() * (1 - beta * beta)) * scale)
+  //           << " "
+  //           << scale * 2 * m_e * beta * beta /
+  //                  (bb.Return_I() * (1 - beta * beta))
+  //           << " "
+  //           << (std::log(2 * m_e * beta * beta /
+  //                        (bb.Return_I() * (1 - beta * beta)))) *
+  //                  scale
+  //           << " end ";
 
   // std::cout << (bb.Return_thick() * bb.Compute_K() * bb.Return_density() *
   //               (-beta * beta +
@@ -33,6 +33,7 @@ double Bethe(Bethe_Block bb, double dE, double beta) {
   //                         (bb.Return_I() * (1 - beta * beta))))) *
   //                  4294967296 * 4294967296
   //           << " ";
+
   return dE * beta * beta /
          (bb.Return_thick() * bb.Compute_K() * bb.Return_density() *
           (-beta * beta + std::log(2 * m_e * beta * beta /
@@ -53,7 +54,7 @@ int main() {
 
   // Generation of data
   Range<int> charge;
-  charge.min = 1;
+  charge.min = 2;
   charge.max = 10; // I
 
   std::vector<int> N_particles;
@@ -74,12 +75,12 @@ int main() {
     int int_Bethe = Bethe_Block_scaled_file("data.dat", BB, data.Return_dE(i),
                                             data.Return_beta(i));
 
-    // std::cout << "\n " << i << ") "
-    //           << "real: " << data.Return_charge(i)
-    //           << " z double: " << double_Bethe << " "
-    //           << " z int : " << int_Bethe;
     if (std::abs((static_cast<int>(double_Bethe) - int_Bethe)) > 1) {
       N_error++;
+      // std::cout << "\n " << i << ") "
+      //           << "real: " << data.Return_charge(i)
+      //           << " z double: " << double_Bethe << " "
+      //           << " z int : " << int_Bethe << std::endl;
     }
   }
   std::cout << "\n Number of charge wrongly reconstructed (Delta(charge)>1):"
